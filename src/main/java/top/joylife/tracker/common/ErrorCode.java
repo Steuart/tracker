@@ -1,0 +1,27 @@
+package top.joylife.tracker.common;
+
+import lombok.Getter;
+
+@Getter
+public enum ErrorCode {
+    system_error("-1","系统异常"),
+    user_name_can_not_be_empity("1000","用户名不能为空"),
+    username_wrong("1001","用户名或密码错误"),
+    password_can_not_be_empty("1002","密码不能为空"),
+
+
+
+
+
+
+    end_error("1111","终极异常");
+
+
+    private String code;
+    private String msg;
+
+    ErrorCode(String code,String msg){
+        this.code = code;
+        this.msg = msg;
+    }
+}

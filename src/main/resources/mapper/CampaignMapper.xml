@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.joylife.tracker.dao.mapper.CampaignMapper">
+  <resultMap id="BaseResultMap" type="top.joylife.tracker.dao.entity.Campaign">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="traffic_id" jdbcType="INTEGER" property="trafficId" />
+    <result column="network_id" jdbcType="INTEGER" property="networkId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="leads" jdbcType="INTEGER" property="leads" />
+    <result column="clicks" jdbcType="INTEGER" property="clicks" />
+    <result column="cost_per_click" jdbcType="INTEGER" property="costPerClick" />
+    <result column="pay_per_lead" jdbcType="INTEGER" property="payPerLead" />
+    <result column="is_active" jdbcType="INTEGER" property="isActive" />
+    <result column="date_create" jdbcType="TIMESTAMP" property="dateCreate" />
+    <result column="date_update" jdbcType="TIMESTAMP" property="dateUpdate" />
+    <result column="date_delete" jdbcType="TIMESTAMP" property="dateDelete" />
+  </resultMap>
+</mapper>
