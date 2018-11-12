@@ -28,4 +28,13 @@ public class UserDao extends BaseDao<User>{
                 .andEqualTo("username",username);
         return userMapper.selectOneByExample(example);
     }
+
+    public void updatePassword(String username,String password){
+        Example example = new Example(User.class);
+        example.createCriteria()
+                .andEqualTo("username",username);
+        User user = new User();
+        user.setPassword(password);
+        userMapper.updateByExampleSelective(user,example);
+    }
 }

@@ -69,12 +69,22 @@ public class UserService {
      */
     public void updateUser(Integer userId,UserParam userParam){
         User user = new User();
+        userParam.setPassword(null);
         BeanUtils.copyProperties(userParam,user);
         user.setId(userId);
         if(!StringUtils.isEmpty(userParam.getPassword())){
             user.setPassword(md5Password(userParam.getUsername(),userParam.getPassword()));
         }
         userDao.updateById(user);
+    }
+
+    /**
+     * 更新用户密码
+     * @param username
+     * @param password
+     */
+    public void updatePassword(String username,String password){
+        userDao.updatePassword(username,md5Password(username,password));
     }
 
     /**
@@ -89,7 +99,7 @@ public class UserService {
     /**
      * 生成密码
      * @param username
-     * @param password
+     * @param originPassword
      * @return
      */
     public String md5Password(String username,String originPassword){

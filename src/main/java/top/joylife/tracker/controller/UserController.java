@@ -3,14 +3,13 @@ package top.joylife.tracker.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.authorize.AuthHolder;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.dto.UserDto;
 import top.joylife.tracker.common.exception.Warning;
+import top.joylife.tracker.common.param.UserParam;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.UserService;
 
@@ -56,6 +55,57 @@ public class UserController {
         return ReUtil.success(userDto);
     }
 
+    /**
+     * 添加用户
+     * @param userParam
+     * @return
+     */
+    @PutMapping
+    public ReData<Integer> addUser(@RequestBody UserParam userParam){
+        String password = userParam.getPassword();
+        if(StringUtils.isEmpty(password)){
+            throw new Warning("密码不能为空");
+        }
 
+        String username = userParam.getUsername();
+        if(StringUtils.isEmpty(username)){
+            throw new Warning("用户名不能为空");
+        }
+        Integer userId = userService.addUser(userParam);
+        return ReUtil.success(userId);
+    }
+
+    /**
+     * 更新用户
+     * @param id
+     * @param userParam
+     * @return
+     */
+    @PostMapping(value = "{id}")
+    public ReData<Integer> updateUser(@PathVariable Integer id, @RequestBody UserParam userParam){
+        if(id==null){
+            throw new Warning("用户id不能为空");
+        }
+        userService.updateUser(id,userParam);
+        return ReUtil.success(id);
+    }
+
+    /**
+     * 更新用户密码
+     * @param username
+     * @param password
+     * @return
+     */
+    @PostMapping(value = "password/{username}")
+    public ReData<String> updatePassword(@PathVariable String username,String password){
+        if(StringUtils.isEmpty(username)){
+            throw new Warning("用户名不能为空");
+        }
+        if(StringUtils.isEmpty(password)){
+            throw new Warning("密码不能为空");
+        }
+        userService.updatePassword(username,password);
+        return ReUtil.success(username);
+    }
 
 }
