@@ -30,9 +30,9 @@ public class CampaignDto {
     private Integer offerId;
 
     /**
-     * 任务link
+     * 重定向链接
      */
-    private String offerLink;
+    private String redirectLink;
 
     /**
      * 名字

@@ -7,7 +7,7 @@ public class UuidUtil {
 
     private static SecureRandom random = new SecureRandom();
 
-    public static String uuid() {
+    public static String getUuid() {
         String uuid = UUID.randomUUID().toString();
         uuid = uuid.replaceAll("-", "");
         return uuid;

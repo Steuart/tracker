@@ -10,12 +10,6 @@ public class Campaign {
     private Integer id;
 
     /**
-     * 分组id
-     */
-    @Column(name = "group_id")
-    private Integer groupId;
-
-    /**
      * 流量id
      */
     @Column(name = "traffic_id")
@@ -27,6 +21,10 @@ public class Campaign {
     @Column(name = "network_id")
     private Integer networkId;
 
+    /**
+     * 任务id
+     */
+    @Column(name = "offer_id")
     private Integer offerId;
 
     /**
@@ -37,7 +35,8 @@ public class Campaign {
     /**
      * offerlink
      */
-    private String offerLink;
+    @Column(name = "redirect_link")
+    private String redirectLink;
 
     /**
      * 类型
@@ -102,24 +101,6 @@ public class Campaign {
      */
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    /**
-     * 获取分组id
-     *
-     * @return group_id - 分组id
-     */
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    /**
-     * 设置分组id
-     *
-     * @param groupId 分组id
-     */
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
     }
 
     /**
@@ -346,11 +327,11 @@ public class Campaign {
         this.offerId = offerId;
     }
 
-    public String getOfferLink() {
-        return offerLink;
+    public String getRedirectLink() {
+        return redirectLink;
     }
 
-    public void setOfferLink(String offerLink) {
-        this.offerLink = offerLink;
+    public void setRedirectLink(String redirectLink) {
+        this.redirectLink = redirectLink;
     }
 }

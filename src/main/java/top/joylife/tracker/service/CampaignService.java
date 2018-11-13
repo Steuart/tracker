@@ -20,6 +20,9 @@ public class CampaignService {
             return campaignDto;
         }
         Campaign campaign = campaignDao.getById(id);
+        if(campaign==null){
+            return null;
+        }
         campaignDto = new CampaignDto();
         BeanUtils.copyProperties(campaign,campaignDto);
         CampaignCache.saveCache(campaignDto);

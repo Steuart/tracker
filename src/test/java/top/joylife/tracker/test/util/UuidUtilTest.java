@@ -14,6 +14,6 @@ public class UuidUtilTest {
 
     @Test
     public void other(){
-        log.info(UuidUtil.uuid());
+        log.info(UuidUtil.getUuid());
     }
 }

@@ -24,7 +24,6 @@ public class CampaignDaoTest {
         campaign.setClicks(10);
         campaign.setTrafficId(1);
         campaign.setNetworkId(1);
-        campaign.setGroupId(1);
         campaign.setType(1);
         campaignDao.insert(campaign);
         log.info("id:{}",campaign.getId());
