@@ -27,10 +27,17 @@ public class Campaign {
     @Column(name = "network_id")
     private Integer networkId;
 
+    private Integer offerId;
+
     /**
      * 名字
      */
     private String name;
+
+    /**
+     * offerlink
+     */
+    private String offerLink;
 
     /**
      * 类型
@@ -329,5 +336,21 @@ public class Campaign {
      */
     public void setDateDelete(Date dateDelete) {
         this.dateDelete = dateDelete;
+    }
+
+    public Integer getOfferId() {
+        return offerId;
+    }
+
+    public void setOfferId(Integer offerId) {
+        this.offerId = offerId;
+    }
+
+    public String getOfferLink() {
+        return offerLink;
+    }
+
+    public void setOfferLink(String offerLink) {
+        this.offerLink = offerLink;
     }
 }

@@ -19,4 +19,9 @@ public class CampaignService {
         BeanUtils.copyProperties(campaign,campaignDto);
         return campaignDto;
     }
+
+    public String getLink(Integer id){
+        Campaign campaign = campaignDao.getById(id);
+        return campaign.getOfferLink();
+    }
 }
