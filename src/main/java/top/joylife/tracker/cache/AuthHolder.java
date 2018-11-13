@@ -1,4 +1,4 @@
-package top.joylife.tracker.authorize;
+package top.joylife.tracker.cache;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;

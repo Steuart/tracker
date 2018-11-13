@@ -25,6 +25,16 @@ public class CampaignDto {
     private Integer networkId;
 
     /**
+     * 任务id
+     */
+    private Integer offerId;
+
+    /**
+     * 任务link
+     */
+    private String offerLink;
+
+    /**
      * 名字
      */
     private String name;

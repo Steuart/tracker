@@ -4,7 +4,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import top.joylife.tracker.authorize.AuthHolder;
+import top.joylife.tracker.cache.AuthHolder;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.dto.UserDto;

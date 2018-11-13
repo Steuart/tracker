@@ -23,7 +23,7 @@ public class ClickRecordController {
     @RequestMapping(value = "/{campaignId}")
     public void recordLog(@PathVariable Integer campaignId, @RequestBody Map<String,Object> param){
 
-        String link = campaignService.getLink(campaignId);
-
+        CampaignDto campaignDto = campaignService.getCampaign(campaignId);
+        String link = campaignDto.getOfferLink();
     }
 }
