@@ -22,6 +22,12 @@ public class Campaign {
     private Integer networkId;
 
     /**
+     * landing page
+     */
+    @Column(name = "landing_page_id")
+    private Integer landingPageId;
+
+    /**
      * 任务id
      */
     @Column(name = "offer_id")
@@ -33,7 +39,7 @@ public class Campaign {
     private String name;
 
     /**
-     * offerlink
+     * 重定向链接
      */
     @Column(name = "redirect_link")
     private String redirectLink;
@@ -140,6 +146,42 @@ public class Campaign {
     }
 
     /**
+     * 获取landing page
+     *
+     * @return landing_page_id - landing page
+     */
+    public Integer getLandingPageId() {
+        return landingPageId;
+    }
+
+    /**
+     * 设置landing page
+     *
+     * @param landingPageId landing page
+     */
+    public void setLandingPageId(Integer landingPageId) {
+        this.landingPageId = landingPageId;
+    }
+
+    /**
+     * 获取任务id
+     *
+     * @return offer_id - 任务id
+     */
+    public Integer getOfferId() {
+        return offerId;
+    }
+
+    /**
+     * 设置任务id
+     *
+     * @param offerId 任务id
+     */
+    public void setOfferId(Integer offerId) {
+        this.offerId = offerId;
+    }
+
+    /**
      * 获取名字
      *
      * @return name - 名字
@@ -155,6 +197,24 @@ public class Campaign {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * 获取重定向链接
+     *
+     * @return redirect_link - 重定向链接
+     */
+    public String getRedirectLink() {
+        return redirectLink;
+    }
+
+    /**
+     * 设置重定向链接
+     *
+     * @param redirectLink 重定向链接
+     */
+    public void setRedirectLink(String redirectLink) {
+        this.redirectLink = redirectLink;
     }
 
     /**
@@ -317,21 +377,5 @@ public class Campaign {
      */
     public void setDateDelete(Date dateDelete) {
         this.dateDelete = dateDelete;
-    }
-
-    public Integer getOfferId() {
-        return offerId;
-    }
-
-    public void setOfferId(Integer offerId) {
-        this.offerId = offerId;
-    }
-
-    public String getRedirectLink() {
-        return redirectLink;
-    }
-
-    public void setRedirectLink(String redirectLink) {
-        this.redirectLink = redirectLink;
     }
 }

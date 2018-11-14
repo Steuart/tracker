@@ -39,11 +39,7 @@
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
 
-        <table tableName="campaign_landing_page">
-            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
-        </table>
-
-        <table tableName="campaign_offer">
+        <table tableName="campaign_token">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
 

@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ClickRecord {
     @Id
     @GeneratedValue(generator = "JDBC")
-    private Integer id;
+    private String id;
 
     /**
      * campaignId
@@ -209,14 +209,14 @@ public class ClickRecord {
     /**
      * @return id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -6,10 +6,12 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="group_id" jdbcType="INTEGER" property="groupId" />
     <result column="traffic_id" jdbcType="INTEGER" property="trafficId" />
     <result column="network_id" jdbcType="INTEGER" property="networkId" />
+    <result column="landing_page_id" jdbcType="INTEGER" property="landingPageId" />
+    <result column="offer_id" jdbcType="INTEGER" property="offerId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="redirect_link" jdbcType="VARCHAR" property="redirectLink" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="leads" jdbcType="INTEGER" property="leads" />
     <result column="clicks" jdbcType="INTEGER" property="clicks" />
