@@ -17,18 +17,34 @@ public class CampaignController {
     @Autowired
     private CampaignService campaignService;
 
+    /**
+     * 根据id获取项目
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/{id}")
     public ReData<CampaignDto> getCampaign(@PathVariable Integer id){
         CampaignDto campaignDto = campaignService.getCampaign(id);
         return ReUtil.success(campaignDto);
     }
 
+    /**
+     * 保存项目
+     * @param param
+     * @return
+     */
     @PutMapping(value = "")
     public ReData<Integer> saveCampaign(@RequestBody CampaignParam param){
         Integer campaignId = campaignService.saveCampaign(param);
         return ReUtil.success(campaignId);
     }
 
+    /**
+     * 更新项目
+     * @param id
+     * @param param
+     * @return
+     */
     @PostMapping(value = "/{id}")
     public ReData<Integer> updateCampaign(@PathVariable Integer id,
                                           @RequestBody CampaignParam param){
@@ -37,6 +53,11 @@ public class CampaignController {
         return ReUtil.success(id);
     }
 
+    /**
+     * 分页获取项目列表
+     * @param query
+     * @return
+     */
     @GetMapping(value = "/page")
     public ReData<PageInfo<CampaignDto>> pageCampaign(@RequestBody CampaignPageQuery query){
         PageInfo<CampaignDto> campaignDtoPageInfo =  campaignService.pageCampaign(query);

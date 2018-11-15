@@ -3,9 +3,6 @@ package top.joylife.tracker.common.bean.query;
 import lombok.Data;
 
 @Data
-public class CampaignPageQuery {
+public class CampaignPageQuery extends BasePageQuery{
 
-    private Integer pageNo;
-
-    private Integer pageSize;
 }

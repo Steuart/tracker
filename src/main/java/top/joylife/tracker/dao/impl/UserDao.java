@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
+import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.entity.User;
 import top.joylife.tracker.dao.mapper.UserMapper;
@@ -17,6 +18,17 @@ public class UserDao extends BaseDao<User>{
     @Override
     public MyMapper<User> getMapper() {
         return userMapper;
+    }
+
+    /**
+     * 构建分页查询条件
+     *
+     * @param pageQuery
+     * @return
+     */
+    @Override
+    public Example buildPageQueryExample(BasePageQuery pageQuery) {
+        return null;
     }
 
     public User getByUsername(String username){

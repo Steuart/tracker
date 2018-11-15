@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import top.joylife.tracker.common.bean.dto.ClickRecordDto;
 import top.joylife.tracker.common.bean.param.ClickRecordParam;
 import top.joylife.tracker.common.bean.query.ClickRecordPageQuery;
+import top.joylife.tracker.common.util.PageUtil;
 import top.joylife.tracker.dao.entity.ClickRecord;
 import top.joylife.tracker.dao.impl.ClickRecordDao;
 
@@ -33,7 +34,13 @@ public class ClickRecordService {
     }
 
 
+    /**
+     * 分页获取记录
+     * @param query
+     * @return
+     */
     public PageInfo<ClickRecordDto> pageClickRecord(ClickRecordPageQuery query){
-
+        PageInfo<ClickRecord> clickRecordDtoPageInfo = clickRecordDao.pageQuery(query);
+        return PageUtil.copy(clickRecordDtoPageInfo,ClickRecordDto.class);
     }
 }

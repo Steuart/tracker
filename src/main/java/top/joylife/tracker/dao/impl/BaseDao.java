@@ -1,6 +1,12 @@
 package top.joylife.tracker.dao.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import tk.mybatis.mapper.entity.Example;
+import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.dao.MyMapper;
+
+import java.util.List;
 
 public abstract class BaseDao<T> {
 
@@ -48,4 +54,30 @@ public abstract class BaseDao<T> {
         return myMapper.deleteByPrimaryKey(id);
     }
 
+    /**
+     * 分页查询
+     * @param pageQuery
+     * @return
+     */
+    public PageInfo<T> pageQuery(BasePageQuery pageQuery){
+        Integer pageNo = pageQuery.getPageNo();
+        Integer pageSize = pageQuery.getPageSize();
+        if(pageNo==null || pageNo <0){
+            pageNo = 1;
+        }
+        if(pageSize==null || pageSize <0){
+            pageSize = 20;
+        }
+        MyMapper<T> myMapper = getMapper();
+        Example example = buildPageQueryExample(pageQuery);
+        PageHelper.startPage(pageNo,pageSize);
+        List<T> list = myMapper.selectByExample(example);
+        return new PageInfo<>(list);
+    }
+
+    /**
+     * 构建分页查询条件
+     * @return
+     */
+    public abstract Example buildPageQueryExample(BasePageQuery pageQuery);
 }
