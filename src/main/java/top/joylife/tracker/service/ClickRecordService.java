@@ -1,15 +1,17 @@
 package top.joylife.tracker.service;
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import top.joylife.tracker.common.param.ClickRecordParam;
+import top.joylife.tracker.common.bean.dto.ClickRecordDto;
+import top.joylife.tracker.common.bean.param.ClickRecordParam;
+import top.joylife.tracker.common.bean.query.ClickRecordPageQuery;
 import top.joylife.tracker.dao.entity.ClickRecord;
 import top.joylife.tracker.dao.impl.ClickRecordDao;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 @Service
 public class ClickRecordService {
@@ -28,5 +30,10 @@ public class ClickRecordService {
         record.setId(uuid);
         BeanUtils.copyProperties(param,record);
         clickRecordDao.insert(record);
+    }
+
+
+    public PageInfo<ClickRecordDto> pageClickRecord(ClickRecordPageQuery query){
+
     }
 }

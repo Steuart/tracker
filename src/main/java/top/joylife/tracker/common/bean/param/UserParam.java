@@ -1,4 +1,4 @@
-package top.joylife.tracker.common.param;
+package top.joylife.tracker.common.bean.param;
 
 import lombok.Data;
 

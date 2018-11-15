@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.cache.AuthHolder;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.ReData;
-import top.joylife.tracker.common.dto.UserDto;
+import top.joylife.tracker.common.bean.dto.UserDto;
 import top.joylife.tracker.common.exception.Warning;
-import top.joylife.tracker.common.param.UserParam;
+import top.joylife.tracker.common.bean.param.UserParam;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.UserService;
 

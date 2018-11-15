@@ -2,8 +2,7 @@ package top.joylife.tracker.cache;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import top.joylife.tracker.common.dto.CampaignDto;
-import top.joylife.tracker.common.dto.UserDto;
+import top.joylife.tracker.common.bean.dto.CampaignDto;
 
 import java.util.concurrent.TimeUnit;
 

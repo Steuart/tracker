@@ -1,12 +1,23 @@
-package top.joylife.tracker.common.param;
+package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 
-import javax.persistence.Column;
 import java.util.Date;
 
 @Data
-public class ClickRecordParam {
+public class ClickRecordDto {
+
+    private String id;
+
+    /**
+     * campaignId
+     */
+    private Integer campaignId;
+
+    /**
+     * 流量源id
+     */
+    private Integer trafficId;
 
     /**
      * 访问的ip地址
@@ -158,4 +169,13 @@ public class ClickRecordParam {
      */
     private String quality;
 
+    /**
+     * 记录创建时间
+     */
+    private Date dateCreate;
+
+    /**
+     * 记录更新时间
+     */
+    private Date dateUpdate;
 }

@@ -1,4 +1,4 @@
-package top.joylife.tracker.common.dto;
+package top.joylife.tracker.common.bean.dto;
 
 
 import lombok.Data;
@@ -8,11 +8,6 @@ import java.util.Date;
 public class CampaignDto {
 
     private Integer id;
-
-    /**
-     * 分组id
-     */
-    private Integer groupId;
 
     /**
      * 流量id

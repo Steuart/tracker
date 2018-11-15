@@ -1,4 +1,4 @@
-package top.joylife.tracker.common.dto;
+package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 

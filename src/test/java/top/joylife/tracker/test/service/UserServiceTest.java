@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import top.joylife.tracker.common.dto.UserDto;
-import top.joylife.tracker.common.param.UserParam;
+import top.joylife.tracker.common.bean.dto.UserDto;
+import top.joylife.tracker.common.bean.param.UserParam;
 import top.joylife.tracker.service.UserService;
 
 @RunWith(SpringRunner.class)
