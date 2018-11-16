@@ -1,13 +1,16 @@
 package top.joylife.tracker.service;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import top.joylife.tracker.common.bean.dto.UserDto;
 import top.joylife.tracker.common.bean.param.UserParam;
+import top.joylife.tracker.common.bean.query.UserPageQuery;
 import top.joylife.tracker.common.util.MD5Util;
+import top.joylife.tracker.common.util.PageUtil;
 import top.joylife.tracker.dao.entity.User;
 import top.joylife.tracker.dao.impl.UserDao;
 
@@ -91,9 +94,9 @@ public class UserService {
      * 分页获取用户信息
      * @return
      */
-    public Page<UserDto> getUserInfoPage(){
-        List<UserDto> user = new ArrayList<>();
-        return new Page<>();
+    public PageInfo<UserDto> pageQueryUser(UserPageQuery query){
+        PageInfo<User> pageInfo = userDao.pageQuery(query);
+        return PageUtil.copy(pageInfo,UserDto.class);
     }
 
     /**

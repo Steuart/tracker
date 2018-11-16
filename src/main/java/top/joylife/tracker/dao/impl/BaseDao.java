@@ -2,13 +2,17 @@ package top.joylife.tracker.dao.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.dao.MyMapper;
+import top.joylife.tracker.dao.entity.BaseEntity;
 
+import java.util.Date;
 import java.util.List;
 
-public abstract class BaseDao<T> {
+@Slf4j
+public abstract class BaseDao<T extends BaseEntity> {
 
     public abstract MyMapper<T> getMapper();
 
@@ -52,6 +56,26 @@ public abstract class BaseDao<T> {
     public int deleteById(Integer id){
         MyMapper<T> myMapper = getMapper();
         return myMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * 软删除
+     * @param id
+     * @return
+     */
+    public int softDeleteById(Integer id,Class<T> tClass){
+        MyMapper<T> myMapper = getMapper();
+        T ob = null;
+        try {
+            ob = tClass.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            log.error("软删除失败，id:{},Class:{}",id,tClass.getName());
+        }
+        if(ob==null){
+            return 0;
+        }
+        ob.setDateDelete(new Date());
+        return myMapper.updateByPrimaryKeySelective(ob);
     }
 
     /**
