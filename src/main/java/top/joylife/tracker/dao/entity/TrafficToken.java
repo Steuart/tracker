@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Table(name = "traffic_token")
 @Data
-public class TrafficToken {
+public class TrafficToken extends BaseEntity{
 
     private String name;
 

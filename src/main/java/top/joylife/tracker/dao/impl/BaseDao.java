@@ -3,7 +3,9 @@ package top.joylife.tracker.dao.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
+import top.joylife.tracker.common.bean.dto.SortDto;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.entity.BaseEntity;
@@ -75,6 +77,7 @@ public abstract class BaseDao<T extends BaseEntity> {
             return 0;
         }
         ob.setDateDelete(new Date());
+        ob.setId(id);
         return myMapper.updateByPrimaryKeySelective(ob);
     }
 
@@ -94,9 +97,38 @@ public abstract class BaseDao<T extends BaseEntity> {
         }
         MyMapper<T> myMapper = getMapper();
         Example example = buildPageQueryExample(pageQuery);
+        List<SortDto> sorts = pageQuery.getSorts();
+        if(!CollectionUtils.isEmpty(sorts)){
+            SortDto sortDto = sorts.get(0);
+            Example.OrderBy orderBy = null;
+            if(SortDto.SortTypeEnum.ASC.getCode().equals(sortDto.getSortType())){
+                orderBy = example.orderBy(sortDto.getFieldName()).asc();
+            }else{
+                orderBy = example.orderBy(sortDto.getFieldName()).desc();
+            }
+            if(sorts.size()>1){
+                for(int i = 1;i<sorts.size();i++){
+                    buildSort(sorts.get(i),orderBy);
+                }
+            }
+        }
         PageHelper.startPage(pageNo,pageSize);
         List<T> list = myMapper.selectByExample(example);
         return new PageInfo<>(list);
+    }
+
+    /**
+     * 构建sort
+     * @param sortDto
+     * @param orderBy
+     * @return
+     */
+    private void buildSort(SortDto sortDto,Example.OrderBy orderBy){
+        if(SortDto.SortTypeEnum.ASC.getCode().equals(sortDto.getSortType())){
+            orderBy.orderBy(sortDto.getFieldName()).asc();
+        }else{
+            orderBy.orderBy(sortDto.getFieldName()).desc();
+        }
     }
 
     /**

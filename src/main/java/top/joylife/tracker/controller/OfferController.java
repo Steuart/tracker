@@ -15,27 +15,48 @@ public class OfferController {
     @Autowired
     private OfferService offerService;
 
+    /**
+     * 根据id获取offer
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/{id}")
     public ReData<OfferDto> getById(@PathVariable Integer id){
         OfferDto offerDto = offerService.getById(id);
         return ReUtil.success(offerDto);
     }
 
+    /**
+     * 保存offer
+     * @param param
+     * @return
+     */
     @PutMapping(value = "/")
-    public ReData<Integer> saveNetwork(@RequestBody OfferParam param){
+    public ReData<Integer> saveOffer(@RequestBody OfferParam param){
         Integer id = offerService.saveOffer(param);
         return ReUtil.success(id);
     }
 
+    /**
+     * 更新offer
+     * @param id
+     * @param param
+     * @return
+     */
     @PostMapping(value = "/{id}")
-    public ReData<Integer> updateNetwork(@PathVariable Integer id,
+    public ReData<Integer> updateOffer(@PathVariable Integer id,
                                          @RequestBody OfferParam param){
         offerService.updateOffer(id,param);
         return ReUtil.success(id);
     }
 
+    /**
+     * 删除offer
+     * @param id
+     * @return
+     */
     @DeleteMapping(value = "/{id}")
-    public ReData<Integer> deleteNetwork(@PathVariable Integer id){
+    public ReData<Integer> deleteOffer(@PathVariable Integer id){
         offerService.deleteOffer(id);
         return ReUtil.success(id);
     }

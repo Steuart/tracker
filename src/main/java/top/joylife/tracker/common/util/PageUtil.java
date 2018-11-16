@@ -45,6 +45,7 @@ public class PageUtil {
             for (F f:fromList){
                 T t = tClass.newInstance();
                 BeanUtils.copyProperties(f,t);
+                list.add(t);
 
             }
         } catch (InstantiationException | IllegalAccessException e) {
