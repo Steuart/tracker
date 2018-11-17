@@ -103,6 +103,14 @@ public class UserService {
     }
 
     /**
+     * 删除用户
+     * @param userId
+     */
+    public void deleteUser(Integer userId){
+        userDao.softDeleteById(userId,User.class);
+    }
+
+    /**
      * 更新用户密码
      * @param username
      * @param password

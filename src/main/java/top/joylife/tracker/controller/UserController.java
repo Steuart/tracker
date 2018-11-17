@@ -30,9 +30,9 @@ public class UserController {
      * @param response
      * @return
      */
-    @PostMapping(value = "login")
+    @PostMapping(value = "/login")
     public ReData<UserDto> login(String username, String password, HttpServletResponse response){
-        UserDto userDto = userService.getUserInfo(username);
+        UserDto userDto = userService.getUserInfoWithPassword(username);
         if(userDto==null){
             throw new Warning(ErrorCode.username_wrong);
         }
@@ -41,7 +41,7 @@ public class UserController {
         }
         String dbPassword = userDto.getPassword();
         String md5Password = userService.md5Password(username,password);
-        if(!dbPassword.endsWith(md5Password)){
+        if(dbPassword == null || !dbPassword.equals(md5Password)){
             throw new Warning(ErrorCode.username_wrong);
         }
         UserDto cacheUser = new UserDto();
@@ -81,7 +81,7 @@ public class UserController {
      * @param userParam
      * @return
      */
-    @PostMapping(value = "{id}")
+    @PostMapping(value = "/{id}")
     public ReData<Integer> updateUser(@PathVariable Integer id, @RequestBody UserParam userParam){
         if(id==null){
             throw new Warning("用户id不能为空");
@@ -96,7 +96,7 @@ public class UserController {
      * @param password
      * @return
      */
-    @PostMapping(value = "password/{username}")
+    @PostMapping(value = "/password/{username}")
     public ReData<String> updatePassword(@PathVariable String username,String password){
         if(StringUtils.isEmpty(username)){
             throw new Warning("用户名不能为空");
@@ -107,5 +107,17 @@ public class UserController {
         userService.updatePassword(username,password);
         return ReUtil.success(username);
     }
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @DeleteMapping(value = "/{id}")
+    public ReData<Integer> deleteUser(@PathVariable Integer id){
+        userService.deleteUser(id);
+        return ReUtil.success(id);
+    }
+
 
 }

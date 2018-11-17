@@ -25,6 +25,11 @@ public class User extends BaseEntity{
     private String imgUrl;
 
     /**
+     * 用户状态
+     */
+    private Integer status;
+
+    /**
      * 邮箱
      */
     private String email;

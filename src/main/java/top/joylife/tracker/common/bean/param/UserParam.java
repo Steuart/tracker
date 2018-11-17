@@ -10,6 +10,11 @@ public class UserParam {
     private String username;
 
     /**
+     * 用户状态
+     */
+    private Integer status;
+
+    /**
      * 密码
      */
     private String password;
