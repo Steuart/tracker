@@ -32,7 +32,7 @@ public class TrafficController {
      * @param param
      * @return
      */
-    @PutMapping(value = "/")
+    @PutMapping(value = "")
     public ReData<Integer> saveTraffic(@RequestBody TrafficParam param){
         Integer id = trafficService.saveTraffic(param);
         return ReUtil.success(id);

@@ -8,6 +8,8 @@ import top.joylife.tracker.dao.entity.TrafficToken;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.mapper.TrafficTokenMapper;
 
+import java.util.List;
+
 @Repository
 public class TrafficTokenDao extends BaseDao<TrafficToken>{
 
@@ -28,5 +30,19 @@ public class TrafficTokenDao extends BaseDao<TrafficToken>{
     @Override
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
         return null;
+    }
+
+
+    /**
+     * 根据trafficId查询trafficToken
+     * @param trafficId
+     * @return
+     */
+    public List<TrafficToken> listByTrafficId(Integer trafficId){
+        Example example = new Example(TrafficToken.class);
+        example.createCriteria()
+                .andEqualTo("trafficId",trafficId);
+        example.orderBy("id").asc();
+        return trafficTokenMapper.selectByExample(example);
     }
 }

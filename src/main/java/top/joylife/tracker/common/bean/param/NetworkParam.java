@@ -1,10 +1,11 @@
 package top.joylife.tracker.common.bean.param;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class NetworkParam {
-
-    private Integer id;
 
     /**
      * 名字
@@ -12,9 +13,19 @@ public class NetworkParam {
     private String name;
 
     /**
-     * 域名
+     * 主页
      */
-    private String domain;
+    private String homePage;
+
+    /**
+     * 回调url
+     */
+    private String callbackUrl;
+
+    /**
+     * 备注
+     */
+    private String remark;
 
     /**
      * 创建时间

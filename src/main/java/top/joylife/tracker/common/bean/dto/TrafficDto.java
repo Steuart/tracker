@@ -15,19 +15,15 @@ public class TrafficDto {
     private String name;
 
     /**
-     * 是否使用token
+     * 主页
      */
-    private Integer useToken;
+    private String homePage;
 
     /**
-     * http请求方法
+     * 备注
      */
-    private String httpMethod;
+    private String remark;
 
-    /**
-     * 回调url
-     */
-    private String postbackUrl;
 
     /**
      * 创建时间

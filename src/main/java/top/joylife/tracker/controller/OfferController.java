@@ -1,10 +1,12 @@
 package top.joylife.tracker.controller;
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.bean.dto.OfferDto;
 import top.joylife.tracker.common.bean.param.OfferParam;
+import top.joylife.tracker.common.bean.query.OfferPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.OfferService;
 
@@ -31,7 +33,7 @@ public class OfferController {
      * @param param
      * @return
      */
-    @PutMapping(value = "/")
+    @PutMapping(value = "")
     public ReData<Integer> saveOffer(@RequestBody OfferParam param){
         Integer id = offerService.saveOffer(param);
         return ReUtil.success(id);
@@ -59,5 +61,16 @@ public class OfferController {
     public ReData<Integer> deleteOffer(@PathVariable Integer id){
         offerService.deleteOffer(id);
         return ReUtil.success(id);
+    }
+
+    /**
+     * 分页获取offer
+     * @param query
+     * @return
+     */
+    @GetMapping(value = "/page")
+    public ReData<PageInfo<OfferDto>> pageOffer(@RequestBody OfferPageQuery query){
+        PageInfo<OfferDto> offerDtoPageInfo = offerService.pageQueryOffer(query);
+        return ReUtil.success(offerDtoPageInfo);
     }
 }

@@ -1,11 +1,13 @@
 package top.joylife.tracker.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.bean.dto.NetworkDto;
 import top.joylife.tracker.common.bean.param.NetworkParam;
+import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.NetworkService;
 
@@ -28,11 +30,22 @@ public class NetworkController {
     }
 
     /**
+     * 分页获取network
+     * @param query
+     * @return
+     */
+    @GetMapping(value = "/page")
+    public ReData<PageInfo<NetworkDto>> pageNetwork(@RequestBody NetworkPageQuery query){
+        PageInfo<NetworkDto> networkDtoPageInfo = networkService.pageQueryNetWork(query);
+        return ReUtil.success(networkDtoPageInfo);
+    }
+
+    /**
      * 保存network
      * @param param
      * @return
      */
-    @PutMapping(value = "/")
+    @PutMapping(value = "")
     public ReData<Integer> saveNetwork(@RequestBody NetworkParam param){
         Integer id = networkService.saveNetwork(param);
         return ReUtil.success(id);
