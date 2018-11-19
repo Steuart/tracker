@@ -58,7 +58,10 @@ public class CampaignController {
      * @return
      */
     @GetMapping(value = "/page")
-    public ReData<PageInfo<CampaignDto>> pageCampaign(@RequestBody CampaignPageQuery query){
+    public ReData<PageInfo<CampaignDto>> pageCampaign(@RequestBody(required = false) CampaignPageQuery query){
+        if(query == null){
+            query = new CampaignPageQuery();
+        }
         PageInfo<CampaignDto> campaignDtoPageInfo =  campaignService.pageCampaign(query);
         return ReUtil.success(campaignDtoPageInfo);
     }
