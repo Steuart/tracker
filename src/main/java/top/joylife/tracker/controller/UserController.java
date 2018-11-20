@@ -1,5 +1,6 @@
 package top.joylife.tracker.controller;
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -8,6 +9,7 @@ import top.joylife.tracker.cache.AuthHolder;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.bean.dto.UserDto;
+import top.joylife.tracker.common.bean.query.UserPageQuery;
 import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.common.bean.param.UserParam;
 import top.joylife.tracker.common.util.ReUtil;
@@ -53,6 +55,20 @@ public class UserController {
         response.addCookie(cookie);
         userDto.setPassword(null);
         return ReUtil.success(userDto);
+    }
+
+    /**
+     * 分页获取用户信息
+     * @param query
+     * @return
+     */
+    @GetMapping(value = "/page")
+    public ReData<PageInfo<UserDto>> pageUser(@RequestBody(required = false)UserPageQuery query){
+        if(query == null){
+            query = new UserPageQuery();
+        }
+        PageInfo<UserDto> userDtoPageInfo = userService.pageQueryUser(query);
+        return ReUtil.success(userDtoPageInfo);
     }
 
     /**

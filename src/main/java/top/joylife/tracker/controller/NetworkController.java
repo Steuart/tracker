@@ -35,7 +35,10 @@ public class NetworkController {
      * @return
      */
     @GetMapping(value = "/page")
-    public ReData<PageInfo<NetworkDto>> pageNetwork(@RequestBody NetworkPageQuery query){
+    public ReData<PageInfo<NetworkDto>> pageNetwork(@RequestBody(required = false) NetworkPageQuery query){
+        if(query==null){
+            query = new NetworkPageQuery();
+        }
         PageInfo<NetworkDto> networkDtoPageInfo = networkService.pageQueryNetWork(query);
         return ReUtil.success(networkDtoPageInfo);
     }

@@ -24,6 +24,12 @@ public class ClickRecord extends BaseEntity{
     @Column(name = "traffic_id")
     private Integer trafficId;
 
+    @Column(name = "network_id")
+    private Integer networkId;
+
+    @Column(name = "offer_id")
+    private Integer offerId;
+
     /**
      * 访问的ip地址
      */

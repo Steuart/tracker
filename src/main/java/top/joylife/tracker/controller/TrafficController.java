@@ -68,7 +68,10 @@ public class TrafficController {
      * @return
      */
     @GetMapping(value = "/page")
-    public ReData<PageInfo<TrafficDto>> pageTraffic(@RequestBody TrafficPageQuery query){
+    public ReData<PageInfo<TrafficDto>> pageTraffic(@RequestBody(required = false) TrafficPageQuery query){
+        if(query == null){
+            query = new TrafficPageQuery();
+        }
         PageInfo<TrafficDto> trafficDtoPageInfo = trafficService.pageQueryTraffic(query);
         return ReUtil.success(trafficDtoPageInfo);
     }
