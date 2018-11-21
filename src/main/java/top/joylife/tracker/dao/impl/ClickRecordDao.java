@@ -34,6 +34,13 @@ public class ClickRecordDao extends BaseDao<ClickRecord>{
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
         ClickRecordPageQuery query = (ClickRecordPageQuery) pageQuery;
         Example example = new Example(ClickRecord.class);
+        example.createCriteria()
+                .andEqualTo("trafficId",query.getTrafficId())
+                .andEqualTo("networkId",query.getNetworkId())
+                .andEqualTo("offerId",query.getOfferId())
+                .andEqualTo("campaignId",query.getCampaignId())
+                .andBetween("dateCreate",query.getCreateBeginDate(),query.getCreateEndDate())
+                .andBetween("dateUpdate",query.getUpdateBeginDate(),query.getUpdateEndDate());
         return example;
     }
 }

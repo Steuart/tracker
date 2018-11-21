@@ -20,6 +20,11 @@ public class UserDto {
     private String password;
 
     /**
+     * 用户状态
+     */
+    private Integer status;
+
+    /**
      * 邮箱
      */
     private String email;

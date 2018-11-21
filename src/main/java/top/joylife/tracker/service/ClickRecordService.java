@@ -28,7 +28,7 @@ public class ClickRecordService {
     @Async
     public void saveClickRecord(String uuid, ClickRecordParam param, HttpServletRequest request){
         ClickRecord record = new ClickRecord();
-        record.setId(uuid);
+        record.setUuid(uuid);
         BeanUtils.copyProperties(param,record);
         clickRecordDao.insert(record);
     }

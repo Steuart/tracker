@@ -16,7 +16,12 @@ public class NetworkDto {
     /**
      * 域名
      */
-    private String domain;
+    private String homePage;
+
+    /**
+     * 备注
+     */
+    private String remark;
 
     /**
      * 创建时间

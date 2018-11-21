@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
+import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.dao.entity.Network;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.mapper.NetworkMapper;
@@ -27,6 +28,11 @@ public class NetworkDao extends BaseDao<Network>{
      */
     @Override
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
-        return null;
+        NetworkPageQuery query = (NetworkPageQuery)pageQuery;
+        Example example = new Example(Network.class);
+        example.createCriteria()
+                .andLike("name",query.getName())
+                .andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
+        return example;
     }
 }

@@ -13,19 +13,14 @@ public class TrafficParam {
     private String name;
 
     /**
-     * 是否使用token
+     * 主页
      */
-    private Integer useToken;
+    private String homePage;
 
     /**
-     * http请求方法
+     * 备注
      */
-    private String httpMethod;
-
-    /**
-     * 回调url
-     */
-    private String postbackUrl;
+    private String remark;
 
     /**
      * 创建时间

@@ -54,10 +54,19 @@ public class CampaignService {
      * 更新项目
      * @param campaignParam
      */
-    public void updateCampaign(CampaignParam campaignParam){
+    public void updateCampaign(Integer id,CampaignParam campaignParam){
         Campaign campaign = new Campaign();
         BeanUtils.copyProperties(campaignParam,campaign);
+        campaign.setId(id);
         campaignDao.updateById(campaign);
+    }
+
+    /**
+     * 删除项目
+     * @param id
+     */
+    public void deleteCampaign(Integer id){
+        campaignDao.softDeleteById(id,Campaign.class);
     }
 
     /**

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
+import top.joylife.tracker.common.bean.query.OfferPageQuery;
 import top.joylife.tracker.dao.entity.Offer;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.mapper.OfferMapper;
@@ -27,6 +28,12 @@ public class OfferDao extends BaseDao<Offer>{
      */
     @Override
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
-        return null;
+        OfferPageQuery query = (OfferPageQuery) pageQuery;
+        Example example = new Example(Offer.class);
+        example.createCriteria()
+                .andEqualTo("networkId",query.getNetworkId())
+                .andLike("name",query.getName())
+                .andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
+        return example;
     }
 }

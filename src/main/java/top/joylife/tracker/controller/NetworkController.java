@@ -1,11 +1,13 @@
 package top.joylife.tracker.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.bean.dto.NetworkDto;
 import top.joylife.tracker.common.bean.param.NetworkParam;
+import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.NetworkService;
 
@@ -16,18 +18,48 @@ public class NetworkController {
     @Autowired
     private NetworkService networkService;
 
+    /**
+     * 根据id获取network
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/{id}")
     public ReData<NetworkDto> getById(@PathVariable Integer id){
         NetworkDto networkDto = networkService.getById(id);
         return ReUtil.success(networkDto);
     }
 
-    @PutMapping(value = "/")
+    /**
+     * 分页获取network
+     * @param query
+     * @return
+     */
+    @GetMapping(value = "/page")
+    public ReData<PageInfo<NetworkDto>> pageNetwork(@RequestBody(required = false) NetworkPageQuery query){
+        if(query==null){
+            query = new NetworkPageQuery();
+        }
+        PageInfo<NetworkDto> networkDtoPageInfo = networkService.pageQueryNetWork(query);
+        return ReUtil.success(networkDtoPageInfo);
+    }
+
+    /**
+     * 保存network
+     * @param param
+     * @return
+     */
+    @PutMapping(value = "")
     public ReData<Integer> saveNetwork(@RequestBody NetworkParam param){
         Integer id = networkService.saveNetwork(param);
         return ReUtil.success(id);
     }
 
+    /**
+     * 更新network
+     * @param id
+     * @param param
+     * @return
+     */
     @PostMapping(value = "/{id}")
     public ReData<Integer> updateNetwork(@PathVariable Integer id,
                                          @RequestBody NetworkParam param){
@@ -35,6 +67,11 @@ public class NetworkController {
         return ReUtil.success(id);
     }
 
+    /**
+     * 删除network
+     * @param id
+     * @return
+     */
     @DeleteMapping(value = "/{id}")
     public ReData<Integer> deleteNetwork(@PathVariable Integer id){
         networkService.deleteNetwork(id);

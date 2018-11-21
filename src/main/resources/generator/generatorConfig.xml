@@ -31,7 +31,7 @@
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="user">
+        <!--<table tableName="user">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
 
@@ -60,6 +60,10 @@
         </table>
 
         <table tableName="traffic_token">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>-->
+
+        <table tableName="transfer_record">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
 

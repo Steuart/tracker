@@ -1,7 +1,10 @@
 package top.joylife.tracker.common.bean.param;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class OfferParam {
 
     /**

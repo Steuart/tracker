@@ -8,11 +8,6 @@ import java.util.Date;
 public class CampaignParam {
 
     /**
-     * id
-     */
-    private Integer id;
-
-    /**
      * 流量id
      */
     private Integer trafficId;

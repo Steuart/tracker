@@ -15,20 +15,14 @@ public class Traffic extends BaseEntity{
     private String name;
 
     /**
-     * 是否使用token
-     */
-    @Column(name = "use_token")
-    private Integer useToken;
-
-    /**
      * http请求方法
      */
-    @Column(name = "http_method")
-    private String httpMethod;
+    @Column(name = "home_page")
+    private String homePage;
+
 
     /**
-     * 回调url
+     * 备注
      */
-    @Column(name = "postback_url")
-    private String postbackUrl;
+    private String remark;
 }

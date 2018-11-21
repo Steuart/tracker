@@ -2,13 +2,16 @@ package top.joylife.tracker.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import top.joylife.tracker.common.bean.dto.UserDto;
 import top.joylife.tracker.common.bean.param.UserParam;
 import top.joylife.tracker.common.bean.query.UserPageQuery;
+import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.common.util.MD5Util;
 import top.joylife.tracker.common.util.PageUtil;
 import top.joylife.tracker.dao.entity.User;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -32,9 +36,12 @@ public class UserService {
      */
     public UserDto getUserInfo(String username){
         User user = userDao.getByUsername(username);
-        user.setPassword(null);
-        UserDto userDto = new UserDto();
-        BeanUtils.copyProperties(user,userDto);
+        UserDto userDto = null;
+        if(user!=null){
+            user.setPassword(null);
+            userDto = new UserDto();
+            BeanUtils.copyProperties(user,userDto);
+        }
         return userDto;
     }
 
@@ -57,11 +64,24 @@ public class UserService {
      */
     public Integer addUser(UserParam userParam){
         User user = new User();
+        String username = userParam.getUsername();
+        User oldUser = userDao.getByUsername(username);
+        if(oldUser!=null){
+            throw new Warning("该用户已经存在");
+        }
         BeanUtils.copyProperties(userParam,user);
         if(!StringUtils.isEmpty(userParam.getPassword())){
             user.setPassword(md5Password(userParam.getUsername(),userParam.getPassword()));
         }
-        userDao.insert(user);
+        try{
+            userDao.insert(user);
+        }catch (Exception e){
+            if(e instanceof DuplicateKeyException){
+                throw new Warning("用户名重复");
+            }else {
+                throw e;
+            }
+        }
         return user.getId();
     }
 
@@ -73,12 +93,21 @@ public class UserService {
     public void updateUser(Integer userId,UserParam userParam){
         User user = new User();
         userParam.setPassword(null);
+        userParam.setUsername(null);
         BeanUtils.copyProperties(userParam,user);
         user.setId(userId);
         if(!StringUtils.isEmpty(userParam.getPassword())){
             user.setPassword(md5Password(userParam.getUsername(),userParam.getPassword()));
         }
         userDao.updateById(user);
+    }
+
+    /**
+     * 删除用户
+     * @param userId
+     */
+    public void deleteUser(Integer userId){
+        userDao.softDeleteById(userId,User.class);
     }
 
     /**

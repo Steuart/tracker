@@ -48,8 +48,7 @@ public class CampaignController {
     @PostMapping(value = "/{id}")
     public ReData<Integer> updateCampaign(@PathVariable Integer id,
                                           @RequestBody CampaignParam param){
-        param.setId(id);
-        campaignService.updateCampaign(param);
+        campaignService.updateCampaign(id,param);
         return ReUtil.success(id);
     }
 
@@ -59,8 +58,22 @@ public class CampaignController {
      * @return
      */
     @GetMapping(value = "/page")
-    public ReData<PageInfo<CampaignDto>> pageCampaign(@RequestBody CampaignPageQuery query){
+    public ReData<PageInfo<CampaignDto>> pageCampaign(@RequestBody(required = false) CampaignPageQuery query){
+        if(query == null){
+            query = new CampaignPageQuery();
+        }
         PageInfo<CampaignDto> campaignDtoPageInfo =  campaignService.pageCampaign(query);
         return ReUtil.success(campaignDtoPageInfo);
+    }
+
+    /**
+     * 删除项目
+     * @param id
+     * @return
+     */
+    @DeleteMapping(value = "/{id}")
+    public ReData<Integer> deleteCampaign(@PathVariable Integer id){
+        campaignService.deleteCampaign(id);
+        return ReUtil.success(id);
     }
 }

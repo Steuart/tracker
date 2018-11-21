@@ -1,18 +1,18 @@
-package top.joylife.tracker.dao.entity;
+package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.Date;
-
-@Table(name = "traffic_token")
 @Data
-public class TrafficToken extends BaseEntity{
+public class TrafficTokenDto {
 
     /**
-     * 流量Id
+     * id
      */
-    @Column(name = "traffic_id")
+    private Integer id;
+
+    /**
+     * trafficId
+     */
     private Integer trafficId;
 
     /**

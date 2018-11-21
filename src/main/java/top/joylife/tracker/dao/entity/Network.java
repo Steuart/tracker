@@ -1,9 +1,12 @@
 package top.joylife.tracker.dao.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "network")
+@Data
 public class Network extends BaseEntity {
 
     /**
@@ -12,8 +15,19 @@ public class Network extends BaseEntity {
     private String name;
 
     /**
-     * 域名
+     * 主页
      */
-    private String domain;
+    @Column(name = "home_page")
+    private String homePage;
 
+    /**
+     * 回调url
+     */
+    @Column(name = "callback_url")
+    private String callbackUrl;
+
+    /**
+     * 备注
+     */
+    private String remark;
 }

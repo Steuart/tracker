@@ -4,10 +4,7 @@ import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.bean.dto.CampaignDto;
 import top.joylife.tracker.common.bean.dto.ClickRecordDto;
@@ -62,7 +59,11 @@ public class ClickRecordController {
      * @return
      */
     @GetMapping(value = "/page")
-    public ReData<PageInfo<ClickRecordDto>> pageClickRecord(@RequestBody ClickRecordPageQuery query){
+    @ResponseBody
+    public ReData<PageInfo<ClickRecordDto>> pageClickRecord(@RequestBody(required = false) ClickRecordPageQuery query){
+        if(query==null){
+            query = new ClickRecordPageQuery();
+        }
         PageInfo<ClickRecordDto> clickRecordDtoPageInfo = clickRecordService.pageClickRecord(query);
         return ReUtil.success(clickRecordDtoPageInfo);
     }

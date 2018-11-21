@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.joylife.tracker.dao.mapper.TransferRecordMapper">
+  <resultMap id="BaseResultMap" type="top.joylife.tracker.dao.entity.TransferRecord">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="campaign_id" jdbcType="INTEGER" property="campaignId" />
+    <result column="traffic_id" jdbcType="INTEGER" property="trafficId" />
+    <result column="click_record_id" jdbcType="INTEGER" property="clickRecordId" />
+    <result column="earnings" jdbcType="INTEGER" property="earnings" />
+    <result column="payout" jdbcType="INTEGER" property="payout" />
+    <result column="transfer_date" jdbcType="TIMESTAMP" property="transferDate" />
+    <result column="date_create" jdbcType="TIMESTAMP" property="dateCreate" />
+    <result column="date_update" jdbcType="TIMESTAMP" property="dateUpdate" />
+    <result column="date_delete" jdbcType="TIMESTAMP" property="dateDelete" />
+  </resultMap>
+  
+  
+    <select id="selectTransferCount" resultType="top.joylife.tracker.common.bean.dto.TransferCountDto">
+        SELECT
+          count(*) as transferCount,COALESCE(sum(earnings),0) as sumEarnings,COALESCE(SUM(payout),0) as sumPayout
+        FROM transfer_record
+        where 1=1
+        <if test="beginDate!=null">
+            and transfer_date >= #{beginDate}
+        </if>
+        <if test="endDate !=null">
+            and transfer_date <![CDATA[<=]]> #{endDate}
+        </if>
+    </select>
+
+</mapper>

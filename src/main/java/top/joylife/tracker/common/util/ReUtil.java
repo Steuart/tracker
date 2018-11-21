@@ -36,6 +36,21 @@ public class ReUtil {
     /**
      * 失败返回
      * @param data
+     * @param msg
+     * @param <T>
+     * @return
+     */
+    public static <T> ReData<T> fail(String code,String msg,T data){
+        ReData<T> reData = new ReData<>();
+        reData.setCode(code);
+        reData.setMsg(msg);
+        reData.setData(data);
+        return reData;
+    }
+
+    /**
+     * 失败返回
+     * @param data
      * @param <T>
      * @return
      */

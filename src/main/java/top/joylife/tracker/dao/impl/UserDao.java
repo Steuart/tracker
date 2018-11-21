@@ -31,6 +31,11 @@ public class UserDao extends BaseDao<User>{
         return null;
     }
 
+    /**
+     * 根据用户名查询用户
+     * @param username
+     * @return
+     */
     public User getByUsername(String username){
         if(StringUtils.isEmpty(username)){
             return null;

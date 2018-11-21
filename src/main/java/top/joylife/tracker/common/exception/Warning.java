@@ -7,16 +7,19 @@ public class Warning extends RuntimeException {
 
 
     public Warning(String code,String msg){
+        super(msg);
         this.code = code;
         this.msg = msg;
     }
 
     public Warning(String msg){
+        super(msg);
         this.code = "-1";
         this.msg = msg;
     }
 
     public Warning(ErrorCode errorCode){
+        super(errorCode.getMsg());
         this.code = errorCode.getCode();
         this.msg = errorCode.getMsg();
     }
