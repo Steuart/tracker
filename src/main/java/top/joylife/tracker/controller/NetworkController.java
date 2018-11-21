@@ -11,6 +11,8 @@ import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.NetworkService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("network")
 public class NetworkController {
@@ -41,6 +43,16 @@ public class NetworkController {
         }
         PageInfo<NetworkDto> networkDtoPageInfo = networkService.pageQueryNetWork(query);
         return ReUtil.success(networkDtoPageInfo);
+    }
+
+    /**
+     * 查询网络联盟列表
+     * @return
+     */
+    @GetMapping(value = "/list")
+    public ReData<List<NetworkDto>> listNetwork(){
+        List<NetworkDto> networkDtos = networkService.listNetwork();
+        return ReUtil.success(networkDtos);
     }
 
     /**

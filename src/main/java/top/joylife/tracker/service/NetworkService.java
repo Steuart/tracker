@@ -4,12 +4,16 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.NetworkDto;
 import top.joylife.tracker.common.bean.param.NetworkParam;
 import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.common.util.PageUtil;
 import top.joylife.tracker.dao.entity.Network;
 import top.joylife.tracker.dao.impl.NetworkDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class NetworkService {
@@ -45,5 +49,22 @@ public class NetworkService {
     public PageInfo<NetworkDto> pageQueryNetWork(NetworkPageQuery query){
         PageInfo<Network> pageInfo = networkDao.pageQuery(query);
         return PageUtil.copy(pageInfo,NetworkDto.class);
+    }
+
+    /**
+     * 查询网路联盟列表
+     * @return
+     */
+    public List<NetworkDto> listNetwork(){
+        List<Network> networks = networkDao.list(Network.class);
+        List<NetworkDto> networkDtos = new ArrayList<>();
+        if(!CollectionUtils.isEmpty(networks)){
+            networks.forEach(network -> {
+                NetworkDto networkDto = new NetworkDto();
+                BeanUtils.copyProperties(network,networkDto);
+                networkDtos.add(networkDto);
+            });
+        }
+        return networkDtos;
     }
 }
