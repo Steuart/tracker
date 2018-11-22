@@ -57,8 +57,8 @@ public class CampaignController {
      * @param query
      * @return
      */
-    @GetMapping(value = "/page")
-    public ReData<PageInfo<CampaignDto>> pageCampaign(CampaignPageQuery query){
+    @PostMapping(value = "/page")
+    public ReData<PageInfo<CampaignDto>> pageCampaign(@RequestBody CampaignPageQuery query){
         if(query == null){
             query = new CampaignPageQuery();
         }
