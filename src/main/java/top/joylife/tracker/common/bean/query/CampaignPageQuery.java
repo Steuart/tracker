@@ -1,6 +1,7 @@
 package top.joylife.tracker.common.bean.query;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import top.joylife.tracker.common.bean.dto.SortDto;
 
 import java.util.Date;
@@ -27,10 +28,12 @@ public class CampaignPageQuery extends BasePageQuery{
     /**
      * 创建开始日期
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date beginDate;
 
     /**
      * 创建结束日期
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 }

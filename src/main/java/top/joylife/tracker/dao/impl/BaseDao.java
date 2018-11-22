@@ -118,6 +118,21 @@ public abstract class BaseDao<T extends BaseEntity> {
     }
 
     /**
+     * 查询列表
+     * @param tClass
+     * @return
+     */
+    public List<T> list(Class<T> tClass){
+        MyMapper<T> myMapper = getMapper();
+        Example example = new Example(tClass);
+        example.createCriteria()
+                .andEqualTo("dateDelete",0);
+        example.orderBy("dateCreate").desc();
+        return myMapper.selectByExample(example);
+    }
+
+
+    /**
      * 构建sort
      * @param sortDto
      * @param orderBy

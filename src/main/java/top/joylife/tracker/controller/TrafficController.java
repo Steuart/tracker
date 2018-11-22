@@ -10,6 +10,8 @@ import top.joylife.tracker.common.bean.query.TrafficPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.TrafficService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("traffic")
 public class TrafficController {
@@ -74,5 +76,15 @@ public class TrafficController {
         }
         PageInfo<TrafficDto> trafficDtoPageInfo = trafficService.pageQueryTraffic(query);
         return ReUtil.success(trafficDtoPageInfo);
+    }
+
+    /**
+     * 获取流量平台列表
+     * @return
+     */
+    @GetMapping(value = "/list")
+    public ReData<List<TrafficDto>> listTraffic(){
+        List<TrafficDto> trafficDtos = trafficService.listTraffic();
+        return ReUtil.success(trafficDtos);
     }
 }
