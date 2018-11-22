@@ -60,7 +60,7 @@ public class ClickRecordController {
      */
     @GetMapping(value = "/page")
     @ResponseBody
-    public ReData<PageInfo<ClickRecordDto>> pageClickRecord(@RequestBody(required = false) ClickRecordPageQuery query){
+    public ReData<PageInfo<ClickRecordDto>> pageClickRecord(ClickRecordPageQuery query){
         if(query==null){
             query = new ClickRecordPageQuery();
         }

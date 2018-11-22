@@ -63,7 +63,7 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "/page")
-    public ReData<PageInfo<UserDto>> pageUser(@RequestBody(required = false)UserPageQuery query){
+    public ReData<PageInfo<UserDto>> pageUser(UserPageQuery query){
         if(query == null){
             query = new UserPageQuery();
         }
