@@ -4,12 +4,16 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.OfferDto;
 import top.joylife.tracker.common.bean.param.OfferParam;
 import top.joylife.tracker.common.bean.query.OfferPageQuery;
 import top.joylife.tracker.common.util.PageUtil;
 import top.joylife.tracker.dao.entity.Offer;
 import top.joylife.tracker.dao.impl.OfferDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OfferService {
@@ -45,5 +49,19 @@ public class OfferService {
     public PageInfo<OfferDto> pageQueryOffer(OfferPageQuery query){
         PageInfo<Offer> pageInfo = offerDao.pageQuery(query);
         return PageUtil.copy(pageInfo,OfferDto.class);
+    }
+
+    public List<OfferDto> listOffer(){
+        List<Offer> offers = offerDao.list(Offer.class);
+        List<OfferDto> offerDtos = null;
+        if(!CollectionUtils.isEmpty(offers)){
+            offerDtos = new ArrayList<>();
+            for(Offer offer:offers){
+                OfferDto offerDto = new OfferDto();
+                BeanUtils.copyProperties(offer,offerDto);
+                offerDtos.add(offerDto);
+            }
+        }
+        return offerDtos;
     }
 }

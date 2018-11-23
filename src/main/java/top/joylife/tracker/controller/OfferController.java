@@ -10,6 +10,8 @@ import top.joylife.tracker.common.bean.query.OfferPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.OfferService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("offer")
 public class OfferController {
@@ -75,5 +77,11 @@ public class OfferController {
         }
         PageInfo<OfferDto> offerDtoPageInfo = offerService.pageQueryOffer(query);
         return ReUtil.success(offerDtoPageInfo);
+    }
+
+    @GetMapping(value = "/list")
+    public ReData<List<OfferDto>> listOffer(){
+        List<OfferDto> offerDtos = offerService.listOffer();
+        return ReUtil.success(offerDtos);
     }
 }

@@ -3,6 +3,7 @@ package top.joylife.tracker.dao.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.dto.SortDto;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
@@ -35,11 +36,13 @@ public class CampaignDao extends BaseDao<Campaign>{
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
         Example example = new Example(Campaign.class);
         CampaignPageQuery query = (CampaignPageQuery) pageQuery;
-        example.createCriteria()
-                .andLike("name",query.getName())
-                .andEqualTo("trafficId",query.getTrafficId())
-                .andEqualTo("networkId",query.getNetworkId())
-                .andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
+        Example.Criteria criteria = example.createCriteria();
+        if(!StringUtils.isEmpty(query.getName())){
+            criteria.andLike("name","%"+query.getName()+"%");
+        }
+        criteria.andEqualTo("trafficId",query.getTrafficId());
+        criteria.andEqualTo("networkId",query.getNetworkId());
+        criteria.andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
         return example;
     }
 }

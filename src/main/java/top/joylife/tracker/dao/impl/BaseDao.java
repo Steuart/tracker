@@ -97,6 +97,7 @@ public abstract class BaseDao<T extends BaseEntity> {
         }
         MyMapper<T> myMapper = getMapper();
         Example example = buildPageQueryExample(pageQuery);
+        example.and().andEqualTo("dateDelete",0);
         List<SortDto> sorts = pageQuery.getSorts();
         if(!CollectionUtils.isEmpty(sorts)){
             SortDto sortDto = sorts.get(0);
