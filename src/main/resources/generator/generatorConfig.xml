@@ -63,7 +63,11 @@
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>-->
 
-        <table tableName="transfer_record">
+        <!--<table tableName="transfer_record">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>-->
+
+        <table tableName="system_config">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
 

@@ -6,17 +6,21 @@ import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.entity.Campaign;
+import top.joylife.tracker.dao.entity.CampaignToken;
 import top.joylife.tracker.dao.mapper.CampaignMapper;
+import top.joylife.tracker.dao.mapper.CampaignTokenMapper;
+
+import java.util.List;
 
 @Repository
-public class CampaignTokenDao extends BaseDao<Campaign> {
+public class CampaignTokenDao extends BaseDao<CampaignToken> {
 
     @Autowired
-    private CampaignMapper campaignMapper;
+    private CampaignTokenMapper campaignTokenMapper;
 
     @Override
-    public MyMapper<Campaign> getMapper() {
-        return campaignMapper;
+    public MyMapper<CampaignToken> getMapper() {
+        return campaignTokenMapper;
     }
 
     /**
@@ -28,5 +32,38 @@ public class CampaignTokenDao extends BaseDao<Campaign> {
     @Override
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
         return null;
+    }
+
+    /**
+     * 保存campaignToken
+     * @param campaignTokens
+     */
+    public void batchAddCampaignToken(List<CampaignToken> campaignTokens){
+        campaignTokens.forEach(campaignToken -> {
+            campaignTokenMapper.insertSelective(campaignToken);
+        });
+    }
+
+    /**
+     * 根据campaignId删除
+     * @param campaignId
+     */
+    public void deleteByCampaignId(Integer campaignId){
+        Example example = new Example(CampaignToken.class);
+        example.createCriteria()
+                .andEqualTo("campaignId", campaignId);
+        campaignTokenMapper.deleteByExample(example);
+    }
+
+    /**
+     * 根据campaignId查询
+     * @param campaignId
+     * @return
+     */
+    public List<CampaignToken> listByCampaignId(Integer campaignId){
+        Example example = new Example(CampaignToken.class);
+        example.createCriteria()
+                .andEqualTo("campaignId", campaignId);
+        return campaignTokenMapper.selectByExample(example);
     }
 }
