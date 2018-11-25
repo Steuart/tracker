@@ -70,8 +70,8 @@ public class OfferController {
      * @param query
      * @return
      */
-    @GetMapping(value = "/page")
-    public ReData<PageInfo<OfferDto>> pageOffer(OfferPageQuery query){
+    @PostMapping(value = "/page")
+    public ReData<PageInfo<OfferDto>> pageOffer(@RequestBody OfferPageQuery query){
         if(query==null){
             query = new OfferPageQuery();
         }

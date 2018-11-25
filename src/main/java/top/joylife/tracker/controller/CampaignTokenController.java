@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.bean.dto.CampaignTokenDto;
 import top.joylife.tracker.common.util.ReUtil;
-import top.joylife.tracker.dao.entity.CampaignToken;
 import top.joylife.tracker.service.CampaignTokenService;
 
 import java.util.List;

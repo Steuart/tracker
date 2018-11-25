@@ -21,6 +21,11 @@ public class Offer extends BaseEntity{
     private String name;
 
     /**
+     * 状态
+     */
+    private Integer status;
+
+    /**
      * url
      */
     private String url;
@@ -29,4 +34,9 @@ public class Offer extends BaseEntity{
      * 支付金额
      */
     private Integer payout;
+
+    /**
+     * 备注
+     */
+    private String remark;
 }

@@ -2,8 +2,10 @@ package top.joylife.tracker.advice;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import top.joylife.tracker.common.ReData;
 import top.joylife.tracker.common.exception.Warning;
@@ -20,6 +22,7 @@ public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(value = { Exception.class })
     @ResponseBody
+    @ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
     public ReData<Map<String,Object>> exceptionHandler(HttpServletRequest req, Exception e){
         Map<String,String[]> params = req.getParameterMap();
         String requestUrl = req.getRequestURL().toString();

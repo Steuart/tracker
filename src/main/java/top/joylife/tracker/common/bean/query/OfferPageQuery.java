@@ -11,6 +11,8 @@ public class OfferPageQuery extends BasePageQuery {
 
     private String name;
 
+    private Integer status;
+
     private Date beginDate;
 
     private Date endDate;
