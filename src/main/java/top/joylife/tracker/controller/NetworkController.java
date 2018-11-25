@@ -36,8 +36,8 @@ public class NetworkController {
      * @param query
      * @return
      */
-    @GetMapping(value = "/page")
-    public ReData<PageInfo<NetworkDto>> pageNetwork(NetworkPageQuery query){
+    @PostMapping(value = "/page")
+    public ReData<PageInfo<NetworkDto>> pageNetwork(@RequestBody NetworkPageQuery query){
         if(query==null){
             query = new NetworkPageQuery();
         }

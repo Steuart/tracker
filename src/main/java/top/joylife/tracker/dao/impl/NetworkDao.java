@@ -2,6 +2,7 @@ package top.joylife.tracker.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.common.bean.query.NetworkPageQuery;
@@ -30,9 +31,11 @@ public class NetworkDao extends BaseDao<Network>{
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
         NetworkPageQuery query = (NetworkPageQuery)pageQuery;
         Example example = new Example(Network.class);
-        example.createCriteria()
-                .andLike("name",query.getName())
-                .andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
+        Example.Criteria criteria = example.createCriteria();
+        if(!StringUtils.isEmpty(query.getName())){
+            criteria.andLike("name","%"+query.getName()+"%");
+        }
+        criteria.andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
         return example;
     }
 }
