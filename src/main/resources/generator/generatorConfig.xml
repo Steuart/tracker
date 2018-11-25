@@ -67,9 +67,16 @@
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>-->
 
-        <table tableName="system_config">
+        <!--<table tableName="system_config">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>-->
+
+        <table tableName="target">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
 
+        <table tableName="target_group">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>

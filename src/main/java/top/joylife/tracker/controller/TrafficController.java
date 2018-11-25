@@ -69,8 +69,8 @@ public class TrafficController {
      * @param query
      * @return
      */
-    @GetMapping(value = "/page")
-    public ReData<PageInfo<TrafficDto>> pageTraffic(TrafficPageQuery query){
+    @PostMapping(value = "/page")
+    public ReData<PageInfo<TrafficDto>> pageTraffic(@RequestBody TrafficPageQuery query){
         if(query == null){
             query = new TrafficPageQuery();
         }

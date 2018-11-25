@@ -3,6 +3,7 @@ package top.joylife.tracker.common.bean.param;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class TrafficParam {
@@ -21,6 +22,8 @@ public class TrafficParam {
      * 备注
      */
     private String remark;
+
+    private List<TrafficTokenParam> tokens;
 
     /**
      * 创建时间
