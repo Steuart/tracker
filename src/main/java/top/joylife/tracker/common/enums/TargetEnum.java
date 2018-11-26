@@ -1,8 +1,11 @@
 package top.joylife.tracker.common.enums;
 
+import lombok.Getter;
+
 /**
  * 统计指标枚举值
  */
+@Getter
 public enum TargetEnum {
     ipAddress("ipAddress","来源IP"),
     reffer("reffer","跳转链接"),

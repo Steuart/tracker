@@ -71,11 +71,7 @@
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>-->
 
-        <table tableName="target">
-            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
-        </table>
-
-        <table tableName="target_group">
+        <table tableName="quota">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
     </context>
