@@ -45,4 +45,16 @@ public class TrafficTokenDao extends BaseDao<TrafficToken>{
         example.orderBy("id").asc();
         return trafficTokenMapper.selectByExample(example);
     }
+
+    /**
+     * 根据名字查询
+     * @param name
+     * @return
+     */
+    public List<TrafficToken> selectByName(String name){
+        Example example = new Example(TrafficToken.class);
+        example.createCriteria()
+                .andEqualTo("name", name);
+        return trafficTokenMapper.selectByExample(example);
+    }
 }

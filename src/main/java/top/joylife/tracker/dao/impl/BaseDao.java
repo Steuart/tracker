@@ -9,6 +9,7 @@ import top.joylife.tracker.common.bean.dto.SortDto;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.entity.BaseEntity;
+import top.joylife.tracker.dao.entity.Campaign;
 
 import java.util.Date;
 import java.util.List;
@@ -132,6 +133,19 @@ public abstract class BaseDao<T extends BaseEntity> {
         return myMapper.selectByExample(example);
     }
 
+    /**
+     * 根据id批量查询列表
+     * @param ids
+     * @return
+     */
+    public List<T> listByIds(List<Integer> ids, Class<T> tClass){
+        MyMapper<T> myMapper = getMapper();
+        Example example = new Example(tClass);
+        example.createCriteria()
+                .andIn("id", ids)
+                .andEqualTo("dateDelete",0);
+        return myMapper.selectByExample(example);
+    }
 
     /**
      * 构建sort

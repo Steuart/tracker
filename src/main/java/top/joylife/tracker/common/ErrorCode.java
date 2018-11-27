@@ -9,7 +9,8 @@ public enum ErrorCode {
     username_wrong("1001","用户名或密码错误"),
     password_can_not_be_empty("1002","密码不能为空"),
 
-
+    campaign_exists("2001", "有项目正在使用TOKEN"),
+    traffic_exists("2002", "有流量平台正在使用TOKEN"),
 
 
 

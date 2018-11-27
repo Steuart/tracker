@@ -29,15 +29,18 @@ public class ExceptionHandlerAdvice {
         log.error("something wrong, requestUrl:{},params:{}",requestUrl, JSON.toJSONString(params),e);
         String msg = "";
         String code = "0";
+        Object datas = null;
         if(e instanceof Warning){
             Warning warning = (Warning)e;
             msg = warning.getMsg();
             code = warning.getCode();
+            datas = warning.getData();
         }else{
             msg = e.getMessage();
         }
         Map<String,Object> data = new HashMap<>();
-        data.put("requestUrl",requestUrl);
+        data.put("requestUrl", requestUrl);
+        data.put("data", datas);
         return ReUtil.fail(code, msg, data);
     }
 }

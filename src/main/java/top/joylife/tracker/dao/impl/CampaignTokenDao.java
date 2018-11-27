@@ -66,4 +66,16 @@ public class CampaignTokenDao extends BaseDao<CampaignToken> {
                 .andEqualTo("campaignId", campaignId);
         return campaignTokenMapper.selectByExample(example);
     }
+
+    /**
+     * 根据名字查询campaignToken
+     * @param name
+     * @return
+     */
+    public List<CampaignToken> selectByName(String name){
+        Example example = new Example(CampaignToken.class);
+        example.createCriteria()
+                .andEqualTo("name", name);
+        return campaignTokenMapper.selectByExample(example);
+    }
 }
