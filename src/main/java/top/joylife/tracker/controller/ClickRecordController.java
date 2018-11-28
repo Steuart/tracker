@@ -39,12 +39,11 @@ public class ClickRecordController {
      */
     @RequestMapping(value = "/{campaignId}")
     public void recordLog(@PathVariable Integer campaignId,
-                          @RequestBody(required = false) ClickRecordParam param,
                           HttpServletResponse response,HttpServletRequest request){
         CampaignDto campaignDto = campaignService.getCampaign(campaignId);
         String link = campaignDto.getRedirectLink();
         String clickRecordId = UuidUtil.getUuid();
-        clickRecordService.saveClickRecord(clickRecordId,param,request);
+        clickRecordService.saveClickRecord(clickRecordId,request);
         String redirectLink = String.format(link,clickRecordId);
         try {
             response.sendRedirect(redirectLink);

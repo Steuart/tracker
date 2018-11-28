@@ -1,5 +1,6 @@
 package top.joylife.tracker.service;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import top.joylife.tracker.dao.entity.ClickRecord;
 import top.joylife.tracker.dao.impl.ClickRecordDao;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class ClickRecordService {
@@ -26,10 +29,12 @@ public class ClickRecordService {
      * @param param
      */
     @Async
-    public void saveClickRecord(String uuid, ClickRecordParam param, HttpServletRequest request){
+    public void saveClickRecord(String uuid, HttpServletRequest request){
+        Map<String,String[]> params = request.getParameterMap();
         ClickRecord record = new ClickRecord();
         record.setUuid(uuid);
-        BeanUtils.copyProperties(param,record);
+        String content = JSON.toJSONString(params);
+        record.setContent(content);
         clickRecordDao.insert(record);
     }
 
