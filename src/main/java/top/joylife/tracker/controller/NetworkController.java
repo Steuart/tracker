@@ -89,4 +89,13 @@ public class NetworkController {
         networkService.deleteNetwork(id);
         return ReUtil.success(id);
     }
+
+    /**
+     * 回调
+     * @return
+     */
+    @RequestMapping(value = "/callback/{clickRecordId}")
+    public ReData<String> callBack(){
+        return ReUtil.success("xxxx");
+    }
 }

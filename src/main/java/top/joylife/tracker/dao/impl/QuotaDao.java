@@ -52,4 +52,15 @@ public class QuotaDao extends BaseDao<Quota> {
                 .andEqualTo("groupId",groupId);
         return quotaMapper.selectByExample(example);
     }
+
+    /**
+     * 列出所有的quota,去掉分组
+     * @return
+     */
+    public List<Quota> listAllQuotaWithOutGroup(){
+        Example example = new Example(Quota.class);
+        example.createCriteria()
+                .andNotEqualTo("groupId",0);
+        return quotaMapper.selectByExample(example);
+    }
 }
