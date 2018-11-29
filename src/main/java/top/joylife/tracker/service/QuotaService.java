@@ -1,5 +1,7 @@
 package top.joylife.tracker.service;
 
+import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -22,6 +24,7 @@ import java.util.Map;
  * 指标service
  */
 @Service
+@Slf4j
 public class QuotaService {
 
     @Autowired
@@ -89,6 +92,7 @@ public class QuotaService {
             if(e instanceof DuplicateKeyException){
                 throw new Warning(ErrorCode.quota_code_duplicate);
             }
+            log.error("保存指标异常：param:{}", JSON.toJSONString(param),e);
         }
         return quota.getId();
     }
@@ -101,9 +105,16 @@ public class QuotaService {
      */
     public void updateQuota(Integer id, QuotaParam param){
         Quota quota = new Quota();
-        BeanUtils.copyProperties(quota,param);
+        BeanUtils.copyProperties(param, quota);
         quota.setId(id);
-        quotaDao.updateById(quota);
+        try{
+            quotaDao.updateById(quota);
+        }catch (Exception e){
+            if(e instanceof DuplicateKeyException){
+                throw new Warning(ErrorCode.quota_code_duplicate);
+            }
+            log.error("更新指标异常，id:{},param:{}",id,JSON.toJSONString(param),e);
+        }
     }
 
     /**
@@ -121,7 +132,7 @@ public class QuotaService {
         if(Quota.TypeEnum.GROUP.getCode().equals(quota.getType())){
             deleteGroupCheck(quota.getGroupId());
         }else{
-            deleteQuotaCheck(quota.getName());
+            deleteQuotaCheck(quota.getCode());
         }
         quotaDao.deleteById(id);
     }

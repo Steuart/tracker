@@ -5,9 +5,7 @@ import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
 import top.joylife.tracker.dao.MyMapper;
-import top.joylife.tracker.dao.entity.Campaign;
 import top.joylife.tracker.dao.entity.CampaignToken;
-import top.joylife.tracker.dao.mapper.CampaignMapper;
 import top.joylife.tracker.dao.mapper.CampaignTokenMapper;
 
 import java.util.List;
