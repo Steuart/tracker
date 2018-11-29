@@ -39,4 +39,17 @@ public class QuotaDao extends BaseDao<Quota> {
     public List<Quota> listAllQuota(){
         return quotaMapper.selectAll();
     }
+
+
+    /**
+     * 根据分组id查询
+     * @param groupId
+     * @return
+     */
+    public List<Quota> selectByGroupId(Integer groupId){
+        Example example = new Example(Quota.class);
+        example.createCriteria()
+                .andEqualTo("groupId",groupId);
+        return quotaMapper.selectByExample(example);
+    }
 }

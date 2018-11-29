@@ -24,4 +24,9 @@ public class QuotaParam {
      * 备注
      */
     private String remark;
+
+    /**
+     * 指标类型
+     */
+    private Integer type;
 }

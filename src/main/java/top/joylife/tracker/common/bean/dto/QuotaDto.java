@@ -18,6 +18,10 @@ public class QuotaDto {
 
     private Integer groupId;
 
+    private Integer type;
+
+    private Integer deleteAble;
+
     private Date dateCreate;
 
     private Date dateUpdate;

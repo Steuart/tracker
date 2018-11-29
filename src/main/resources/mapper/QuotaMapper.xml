@@ -6,11 +6,12 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="group_id" jdbcType="INTEGER" property="groupId" />
-    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="delete_able" jdbcType="INTEGER" property="deleteAble" />
     <result column="date_create" jdbcType="TIMESTAMP" property="dateCreate" />
     <result column="date_update" jdbcType="TIMESTAMP" property="dateUpdate" />
     <result column="date_delete" jdbcType="TIMESTAMP" property="dateDelete" />

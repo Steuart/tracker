@@ -2,16 +2,17 @@ package top.joylife.tracker.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.bean.dto.QuotaDto;
-import top.joylife.tracker.common.bean.dto.TrafficDto;
 import top.joylife.tracker.common.bean.param.QuotaParam;
 import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,7 +79,18 @@ public class QuotaService {
     public Integer saveQuota(QuotaParam param){
         Quota quota = new Quota();
         BeanUtils.copyProperties(param,quota);
-        return quotaDao.insert(quota);
+        //如果分组id为null，则设置为0，作为分组
+        if(quota.getGroupId() == null){
+            quota.setGroupId(0);
+        }
+        try{
+            quotaDao.insert(quota);
+        }catch (Exception e){
+            if(e instanceof DuplicateKeyException){
+                throw new Warning(ErrorCode.quota_code_duplicate);
+            }
+        }
+        return quota.getId();
     }
 
     /**
@@ -103,7 +115,22 @@ public class QuotaService {
         if(quota == null){
             return;
         }
-        String name = quota.getName();
+        if(Quota.DeleteAbleEnum.NO.getCode().equals(quota.getDeleteAble())){
+            throw new Warning(ErrorCode.quota_can_not_delete);
+        }
+        if(Quota.TypeEnum.GROUP.getCode().equals(quota.getType())){
+            deleteGroupCheck(quota.getGroupId());
+        }else{
+            deleteQuotaCheck(quota.getName());
+        }
+        quotaDao.deleteById(id);
+    }
+
+    /**
+     * 删除指标校验
+     * @param name
+     */
+    private void deleteQuotaCheck(String name) {
         List<CampaignToken> campaignTokens = campaignTokenDao.selectByName(name);
         if(!CollectionUtils.isEmpty(campaignTokens)){
             List<Integer> campaignIds = new ArrayList<>();
@@ -127,7 +154,16 @@ public class QuotaService {
                 throw new Warning(ErrorCode.traffic_exists, traffics);
             }
         }
+    }
 
-        quotaDao.deleteById(id);
+    /**
+     * 删除分组校验
+     * @param id
+     */
+    private void deleteGroupCheck(Integer id) {
+        List<Quota> quotas = quotaDao.selectByGroupId(id);
+        if(!CollectionUtils.isEmpty(quotas)){
+            throw new Warning(ErrorCode.quota_is_not_empty);
+        }
     }
 }
