@@ -23,7 +23,7 @@ public class TokensController {
      * @return
      */
     @PutMapping(value = "")
-    public ReData<Integer> saveTokens(TokensParam tokensParam){
+    public ReData<Integer> saveTokens(@RequestBody TokensParam tokensParam){
         Integer id = tokensService.saveTokens(tokensParam);
         return ReUtil.success(id);
     }
@@ -58,7 +58,7 @@ public class TokensController {
      * @return
      */
     @GetMapping(value = "/list")
-    public ReData<List<TokensDto>> listByTrafficId(Integer idRef, Integer type){
+    public ReData<List<TokensDto>> listByIdRef(Integer idRef, Integer type){
         List<TokensDto> trafficTokenDtos = tokensService.listByIdRefAndType(idRef,type);
         return ReUtil.success(trafficTokenDtos);
     }
