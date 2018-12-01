@@ -49,6 +49,7 @@ public abstract class BaseDao<T extends BaseEntity> {
      */
     public int updateById(T t){
         MyMapper<T> myMapper = getMapper();
+        t.setDateUpdate(new Date());
         return myMapper.updateByPrimaryKeySelective(t);
     }
 

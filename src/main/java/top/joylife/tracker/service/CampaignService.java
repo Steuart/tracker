@@ -63,7 +63,7 @@ public class CampaignService {
         //保存campaignToken
         Integer campaignId = campaign.getId();
         List<Tokens> tokens =  generateCampaignToken(campaignId, campaignParam.getTokens());
-        tokensDao.batchAddCampaignToken(tokens);
+        tokensDao.batchAddTokens(tokens);
         return campaignId;
     }
 
@@ -79,7 +79,7 @@ public class CampaignService {
         Integer campaignId = campaign.getId();
         List<Tokens> tokens = generateCampaignToken(campaignId, campaignParam.getTokens());
         tokensDao.deleteByIdRefAndType(campaignId,Tokens.TypeEnum.CAMPAIGN.getCode());
-        tokensDao.batchAddCampaignToken(tokens);
+        tokensDao.batchAddTokens(tokens);
     }
 
     /**
@@ -153,6 +153,7 @@ public class CampaignService {
             Tokens token = new Tokens();
             BeanUtils.copyProperties(tokenParam, token);
             token.setIdRef(campaignId);
+            token.setType(Tokens.TypeEnum.CAMPAIGN.getCode());
             tokens.add(token);
         });
         return tokens;

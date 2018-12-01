@@ -57,9 +57,9 @@ public class ClickRecordController {
      * @param query
      * @return
      */
-    @GetMapping(value = "/page")
+    @PostMapping(value = "/page")
     @ResponseBody
-    public ReData<PageInfo<ClickRecordDto>> pageClickRecord(ClickRecordPageQuery query){
+    public ReData<PageInfo<ClickRecordDto>> pageClickRecord(@RequestBody(required = false) ClickRecordPageQuery query){
         if(query==null){
             query = new ClickRecordPageQuery();
         }

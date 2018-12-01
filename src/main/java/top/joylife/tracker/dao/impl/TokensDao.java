@@ -53,7 +53,7 @@ public class TokensDao extends BaseDao<Tokens>{
      * 保存campaignToken
      * @param tokens
      */
-    public void batchAddCampaignToken(List<Tokens> tokens){
+    public void batchAddTokens(List<Tokens> tokens){
         tokens.forEach(campaignToken -> {
             tokensMapper.insertSelective(campaignToken);
         });

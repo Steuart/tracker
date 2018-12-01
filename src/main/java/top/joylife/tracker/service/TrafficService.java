@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.TrafficDto;
+import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.param.TrafficParam;
 import top.joylife.tracker.common.bean.query.TrafficPageQuery;
 import top.joylife.tracker.common.util.PageUtil;
+import top.joylife.tracker.dao.entity.Tokens;
 import top.joylife.tracker.dao.entity.Traffic;
+import top.joylife.tracker.dao.impl.TokensDao;
 import top.joylife.tracker.dao.impl.TrafficDao;
 
 import java.util.ArrayList;
@@ -20,6 +23,9 @@ public class TrafficService {
 
     @Autowired
     private TrafficDao trafficDao;
+
+    @Autowired
+    private TokensDao tokensDao;
 
     public TrafficDto getById(Integer id){
         Traffic traffic = trafficDao.getById(id);
@@ -32,6 +38,11 @@ public class TrafficService {
         Traffic traffic = new Traffic();
         BeanUtils.copyProperties(param,traffic);
         trafficDao.insert(traffic);
+        //保存campaignToken
+        Integer trafficId = traffic.getId();
+        List<Tokens> tokens = generateTrafficToken(trafficId, param.getTokens());
+        tokensDao.deleteByIdRefAndType(trafficId,Tokens.TypeEnum.TRAFFIC.getCode());
+        tokensDao.batchAddTokens(tokens);
         return traffic.getId();
     }
 
@@ -40,6 +51,10 @@ public class TrafficService {
         BeanUtils.copyProperties(param,traffic);
         traffic.setId(id);
         trafficDao.updateById(traffic);
+        //保存campaignToken
+        List<Tokens> tokens = generateTrafficToken(id, param.getTokens());
+        tokensDao.deleteByIdRefAndType(id,Tokens.TypeEnum.TRAFFIC.getCode());
+        tokensDao.batchAddTokens(tokens);
     }
 
     public void deleteTraffic(Integer id){
@@ -66,5 +81,22 @@ public class TrafficService {
             });
         }
         return trafficDtos;
+    }
+
+    /**
+     * 生成campaignToken
+     * @param param
+     * @return
+     */
+    private List<Tokens> generateTrafficToken(Integer trafficId, List<TokensParam> param){
+        List<Tokens> tokens = new ArrayList<>();
+        param.forEach(tokenParam ->{
+            Tokens token = new Tokens();
+            BeanUtils.copyProperties(tokenParam, token);
+            token.setIdRef(trafficId);
+            token.setType(Tokens.TypeEnum.TRAFFIC.getCode());
+            tokens.add(token);
+        });
+        return tokens;
     }
 }
