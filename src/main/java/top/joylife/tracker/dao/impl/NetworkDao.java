@@ -38,4 +38,6 @@ public class NetworkDao extends BaseDao<Network>{
         criteria.andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
         return example;
     }
+
+
 }

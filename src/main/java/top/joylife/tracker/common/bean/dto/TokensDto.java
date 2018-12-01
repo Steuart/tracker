@@ -3,17 +3,19 @@ package top.joylife.tracker.common.bean.dto;
 import lombok.Data;
 
 @Data
-public class TrafficTokenDto {
+public class TokensDto {
 
-    /**
-     * id
-     */
     private Integer id;
 
     /**
-     * trafficId
+     * 业务id
      */
-    private Integer trafficId;
+    private Integer idRef;
+
+    /**
+     * 类型，0-campaign,1-traffic,2-network
+     */
+    private Integer type;
 
     /**
      * 名字
@@ -21,12 +23,7 @@ public class TrafficTokenDto {
     private String name;
 
     /**
-     * 参数值
+     * 值
      */
     private String value;
-
-    /**
-     * 备注
-     */
-    private String remark;
 }

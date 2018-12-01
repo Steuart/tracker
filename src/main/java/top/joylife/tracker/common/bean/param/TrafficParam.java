@@ -23,7 +23,10 @@ public class TrafficParam {
      */
     private String remark;
 
-    private List<TrafficTokenParam> tokens;
+    /**
+     * tokens
+     */
+    private List<TokensParam> tokens;
 
     /**
      * 创建时间

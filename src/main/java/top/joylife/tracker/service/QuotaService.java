@@ -14,7 +14,6 @@ import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,16 +30,16 @@ public class QuotaService {
     private QuotaDao quotaDao;
 
     @Autowired
-    private CampaignTokenDao campaignTokenDao;
-
-    @Autowired
-    private TrafficTokenDao trafficTokenDao;
+    private TokensDao tokensDao;
 
     @Autowired
     private CampaignDao campaignDao;
 
     @Autowired
     private TrafficDao trafficDao;
+
+    @Autowired
+    private NetworkDao networkDao;
 
     /**
      * 列出所有的分组和指标
@@ -142,27 +141,43 @@ public class QuotaService {
      * @param name
      */
     private void deleteQuotaCheck(String name) {
-        List<CampaignToken> campaignTokens = campaignTokenDao.selectByName(name);
-        if(!CollectionUtils.isEmpty(campaignTokens)){
+        List<Tokens> tokens = tokensDao.selectByName(name);
+        if(!CollectionUtils.isEmpty(tokens)){
             List<Integer> campaignIds = new ArrayList<>();
-            campaignTokens.forEach(campaignToken -> {
-                campaignIds.add(campaignToken.getCampaignId());
-            });
-            List<Campaign> campaigns = campaignDao.listByIds(campaignIds,Campaign.class);
-            if(!CollectionUtils.isEmpty(campaigns)){
-                throw new Warning(ErrorCode.campaign_exists, campaigns);
-            }
-        }
-
-        List<TrafficToken> trafficTokens = trafficTokenDao.selectByName(name);
-        if(!CollectionUtils.isEmpty(trafficTokens)){
+            List<Integer> networkIds = new ArrayList<>();
             List<Integer> trafficIds = new ArrayList<>();
-            trafficTokens.forEach(trafficToken -> {
-                trafficIds.add(trafficToken.getTrafficId());
+            tokens.forEach(token -> {
+                Tokens.TypeEnum typeEnum = Tokens.TypeEnum.getByCode(token.getType());
+                switch (typeEnum){
+                    case CAMPAIGN:
+                        campaignIds.add(token.getIdRef());
+                        break;
+                    case NETWORK:
+                        networkIds.add(token.getIdRef());
+                        break;
+                    case TRAFFIC:
+                        trafficIds.add(token.getIdRef());
+                        break;
+                }
             });
-            List<Traffic> traffics = trafficDao.listByIds(trafficIds,Traffic.class);
-            if(!CollectionUtils.isEmpty(traffics)){
-                throw new Warning(ErrorCode.traffic_exists, traffics);
+            Map<String,Object> result = new HashMap<>();
+            if(!CollectionUtils.isEmpty(campaignIds)) {
+                List<Campaign> campaigns = campaignDao.listByIds(campaignIds,Campaign.class);
+                result.put("campaign",campaigns);
+            }
+
+            if(!CollectionUtils.isEmpty(networkIds)) {
+                List<Network> networks = networkDao.listByIds(networkIds,Network.class);
+                result.put("network",networks);
+            }
+
+            if(!CollectionUtils.isEmpty(trafficIds)) {
+                List<Traffic> traffics = trafficDao.listByIds(trafficIds,Traffic.class);
+                result.put("traffics",traffics);
+            }
+
+            if(!CollectionUtils.isEmpty(result)){
+                throw new Warning(ErrorCode.campaign_exists, result);
             }
         }
     }

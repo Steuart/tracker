@@ -71,7 +71,7 @@
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>-->
 
-        <table tableName="quota">
+        <table tableName="tokens">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
     </context>

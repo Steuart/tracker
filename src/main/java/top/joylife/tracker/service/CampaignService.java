@@ -1,28 +1,19 @@
 package top.joylife.tracker.service;
 
 import com.github.pagehelper.PageInfo;
-import org.apache.catalina.startup.WebAnnotationSet;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.joylife.tracker.cache.CampaignCache;
 import top.joylife.tracker.common.bean.dto.CampaignDto;
 import top.joylife.tracker.common.bean.param.CampaignParam;
-import top.joylife.tracker.common.bean.param.CampaignTokenParam;
-import top.joylife.tracker.common.bean.param.TrafficTokenParam;
+import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.query.CampaignPageQuery;
 import top.joylife.tracker.common.enums.SystemConfigEnum;
 import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.common.util.PageUtil;
-import top.joylife.tracker.dao.entity.Campaign;
-import top.joylife.tracker.dao.entity.CampaignToken;
-import top.joylife.tracker.dao.entity.Offer;
-import top.joylife.tracker.dao.entity.SystemConfig;
-import top.joylife.tracker.dao.impl.CampaignDao;
-import top.joylife.tracker.dao.impl.CampaignTokenDao;
-import top.joylife.tracker.dao.impl.OfferDao;
-import top.joylife.tracker.dao.impl.SystemConfigDao;
+import top.joylife.tracker.dao.entity.*;
+import top.joylife.tracker.dao.impl.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +31,7 @@ public class CampaignService {
     private SystemConfigDao systemConfigDao;
 
     @Autowired
-    private CampaignTokenDao campaignTokenDao;
+    private TokensDao tokensDao;
     /**
      * 根据id查询项目
      * @param id
@@ -71,8 +62,8 @@ public class CampaignService {
         campaignDao.insert(campaign);
         //保存campaignToken
         Integer campaignId = campaign.getId();
-        List<CampaignToken> tokens =  generateCampaignToken(campaignId, campaignParam.getTokens());
-        campaignTokenDao.batchAddCampaignToken(tokens);
+        List<Tokens> tokens =  generateCampaignToken(campaignId, campaignParam.getTokens());
+        tokensDao.batchAddCampaignToken(tokens);
         return campaignId;
     }
 
@@ -86,9 +77,9 @@ public class CampaignService {
         campaignDao.updateById(campaign);
         //保存campaignToken
         Integer campaignId = campaign.getId();
-        List<CampaignToken> tokens = generateCampaignToken(campaignId, campaignParam.getTokens());
-        campaignTokenDao.deleteByCampaignId(campaignId);
-        campaignTokenDao.batchAddCampaignToken(tokens);
+        List<Tokens> tokens = generateCampaignToken(campaignId, campaignParam.getTokens());
+        tokensDao.deleteByIdRefAndType(campaignId,Tokens.TypeEnum.CAMPAIGN.getCode());
+        tokensDao.batchAddCampaignToken(tokens);
     }
 
     /**
@@ -113,7 +104,7 @@ public class CampaignService {
      * 生成跳转链接
      * @return
      */
-    private String generateRedirectLink(List<CampaignTokenParam> tokens){
+    private String generateRedirectLink(List<TokensParam> tokens){
         SystemConfig systemConfig = systemConfigDao.getByName(SystemConfigEnum.DOMAIN.getName());
         String domain = systemConfig.getValue();
         StringBuilder str = new StringBuilder();
@@ -153,15 +144,15 @@ public class CampaignService {
 
     /**
      * 生成campaignToken
-     * @param campaignTokenParams
+     * @param param
      * @return
      */
-    private List<CampaignToken> generateCampaignToken(Integer campaignId, List<CampaignTokenParam> campaignTokenParams){
-        List<CampaignToken> tokens = new ArrayList<>();
-        campaignTokenParams.forEach(tokenParam ->{
-            CampaignToken token = new CampaignToken();
+    private List<Tokens> generateCampaignToken(Integer campaignId, List<TokensParam> param){
+        List<Tokens> tokens = new ArrayList<>();
+        param.forEach(tokenParam ->{
+            Tokens token = new Tokens();
             BeanUtils.copyProperties(tokenParam, token);
-            token.setCampaignId(campaignId);
+            token.setIdRef(campaignId);
             tokens.add(token);
         });
         return tokens;

@@ -66,7 +66,7 @@ public class CampaignParam {
     /**
      * tokens
      */
-    List<CampaignTokenParam> tokens;
+    List<TokensParam> tokens;
 
     /**
      * 创建时间
