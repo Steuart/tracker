@@ -28,7 +28,8 @@ public class UserDao extends BaseDao<User>{
      */
     @Override
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
-        return null;
+        Example example = new Example(User.class);
+        return example;
     }
 
     /**

@@ -62,8 +62,8 @@ public class UserController {
      * @param query
      * @return
      */
-    @GetMapping(value = "/page")
-    public ReData<PageInfo<UserDto>> pageUser(UserPageQuery query){
+    @PostMapping(value = "/page")
+    public ReData<PageInfo<UserDto>> pageUser(@RequestBody(required = false) UserPageQuery query){
         if(query == null){
             query = new UserPageQuery();
         }
@@ -98,7 +98,7 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "/{id}")
-    public ReData<Integer> updateUser(@PathVariable Integer id, @RequestBody UserParam userParam){
+    public ReData<Integer> updateUser(@PathVariable Integer id, @RequestBody(required = false) UserParam userParam){
         if(id==null){
             throw new Warning("用户id不能为空");
         }
