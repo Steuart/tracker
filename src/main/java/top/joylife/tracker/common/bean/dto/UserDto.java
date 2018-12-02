@@ -25,6 +25,11 @@ public class UserDto {
     private Integer status;
 
     /**
+     * 用户状态str
+     */
+    private String statusStr;
+
+    /**
      * 邮箱
      */
     private String email;

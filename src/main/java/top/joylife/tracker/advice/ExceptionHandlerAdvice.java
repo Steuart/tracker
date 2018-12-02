@@ -22,7 +22,6 @@ public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(value = { Exception.class })
     @ResponseBody
-    @ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
     public ReData<Map<String,Object>> exceptionHandler(HttpServletRequest req, Exception e){
         Map<String,String[]> params = req.getParameterMap();
         String requestUrl = req.getRequestURL().toString();

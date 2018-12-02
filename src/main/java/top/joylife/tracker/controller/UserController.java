@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.cache.AuthHolder;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.ReData;
+import top.joylife.tracker.common.bean.dto.UpdateUserPasswordDto;
 import top.joylife.tracker.common.bean.dto.UserDto;
 import top.joylife.tracker.common.bean.query.UserPageQuery;
 import top.joylife.tracker.common.exception.Warning;
@@ -122,6 +123,25 @@ public class UserController {
         }
         userService.updatePassword(username,password);
         return ReUtil.success(username);
+    }
+
+    /**
+     * 更新用户密码，通过用户id更新
+     * @param username
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    @PostMapping(value = "/passwordWithOld/{username}")
+    public ReData<String> updatePasswordById(@PathVariable String username, @RequestBody UpdateUserPasswordDto passwordDto){
+        if(StringUtils.isEmpty(username)){
+            throw new Warning("用户id不能为空");
+        }
+        if(StringUtils.isEmpty(passwordDto.getOldPassword())){
+            throw new Warning("旧密码不能为空");
+        }
+        userService.updatePasswordById(username,passwordDto.getOldPassword(),passwordDto.getNewPassword());
+        return ReUtil.success("success");
     }
 
     /**

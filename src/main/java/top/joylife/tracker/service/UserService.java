@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import top.joylife.tracker.common.bean.dto.UserDto;
 import top.joylife.tracker.common.bean.param.UserParam;
@@ -96,9 +97,6 @@ public class UserService {
         userParam.setUsername(null);
         BeanUtils.copyProperties(userParam,user);
         user.setId(userId);
-        if(!StringUtils.isEmpty(userParam.getPassword())){
-            user.setPassword(md5Password(userParam.getUsername(),userParam.getPassword()));
-        }
         userDao.updateById(user);
     }
 
@@ -120,12 +118,35 @@ public class UserService {
     }
 
     /**
+     * 根据id更新密码
+     * @param username
+     * @param oldPassword
+     * @param password
+     */
+    public void updatePasswordById(String username,String oldPassword,String password){
+        User user = userDao.getByUsername(username);
+        oldPassword = md5Password(username,oldPassword);
+        if(!oldPassword.equals(user.getPassword())){
+            throw new Warning("原始密码错误");
+        }
+        updatePassword(user.getUsername(),password);
+    }
+
+    /**
      * 分页获取用户信息
      * @return
      */
     public PageInfo<UserDto> pageQueryUser(UserPageQuery query){
         PageInfo<User> pageInfo = userDao.pageQuery(query);
-        return PageUtil.copy(pageInfo,UserDto.class);
+        PageInfo<UserDto> userDtoPageInfo = PageUtil.copy(pageInfo,UserDto.class);
+        List<UserDto> userDtos = userDtoPageInfo.getList();
+        if(!CollectionUtils.isEmpty(userDtos)){
+            userDtos.forEach(userDto -> {
+                User.StatusEnum statusEnum = User.StatusEnum.getByCode(userDto.getStatus());
+                userDto.setStatusStr(statusEnum.getDesc());
+            });
+        }
+        return userDtoPageInfo;
     }
 
     /**
