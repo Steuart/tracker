@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.cache.AuthHolder;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.ReData;
+import top.joylife.tracker.common.bean.dto.LoginUserInfoDto;
 import top.joylife.tracker.common.bean.dto.UpdateUserPasswordDto;
 import top.joylife.tracker.common.bean.dto.UserDto;
 import top.joylife.tracker.common.bean.query.UserPageQuery;
@@ -34,7 +35,8 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "/login")
-    public ReData<UserDto> login(String username, String password, HttpServletResponse response){
+    public ReData<LoginUserInfoDto> login(String username, String password, HttpServletResponse response){
+        LoginUserInfoDto result = new LoginUserInfoDto();
         UserDto userDto = userService.getUserInfoWithPassword(username);
         if(userDto==null){
             throw new Warning(ErrorCode.username_wrong);
@@ -55,7 +57,9 @@ public class UserController {
         cookie.setPath("/");
         response.addCookie(cookie);
         userDto.setPassword(null);
-        return ReUtil.success(userDto);
+        result.setToken(token);
+        result.setUser(userDto);
+        return ReUtil.success(result);
     }
 
     /**

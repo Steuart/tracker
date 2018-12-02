@@ -1,5 +1,6 @@
 package top.joylife.tracker.common.util;
 
+import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.ReData;
 
 public class ReUtil {
@@ -30,6 +31,14 @@ public class ReUtil {
         reData.setCode("0");
         reData.setMsg("fail");
         reData.setData(data);
+        return reData;
+    }
+
+    public static ReData<String> fail(ErrorCode errorCode){
+        ReData<String> reData = new ReData<>();
+        reData.setMsg(errorCode.getMsg());
+        reData.setCode(errorCode.getCode());
+        reData.setData("fail");
         return reData;
     }
 

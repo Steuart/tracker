@@ -46,4 +46,12 @@ public class UserServiceTest {
         userParam.setPassword("xcxcxcxc");
         userService.updateUser(userId,userParam);
     }
+
+    @Test
+    public void generatePassword(){
+        String username = "admin";
+        String password = "12345678";
+        String result = userService.md5Password(username,password);
+        log.info("result:{}",result);
+    }
 }

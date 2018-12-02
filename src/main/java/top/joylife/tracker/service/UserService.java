@@ -54,7 +54,9 @@ public class UserService {
     public UserDto getUserInfoWithPassword(String username){
         User user = userDao.getByUsername(username);
         UserDto userDto = new UserDto();
-        BeanUtils.copyProperties(user,userDto);
+        if(user!=null){
+            BeanUtils.copyProperties(user,userDto);
+        }
         return userDto;
     }
 

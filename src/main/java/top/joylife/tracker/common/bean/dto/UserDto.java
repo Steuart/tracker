@@ -8,7 +8,6 @@ import java.util.Date;
 public class UserDto {
 
     private Integer id;
-
     /**
      * 用户名
      */

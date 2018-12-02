@@ -1,5 +1,6 @@
 package top.joylife.tracker.cache;
 
+import com.github.pagehelper.PageInfo;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import org.springframework.util.StringUtils;
@@ -42,6 +43,9 @@ public class AuthHolder {
      * @return
      */
     public static UserDto getUserByToken(String token){
+        if(StringUtils.isEmpty(token)){
+            return null;
+        }
         String username = USERNAME_TOKEN_CACHE.getIfPresent(token);
         if(StringUtils.isEmpty(username)){
             return null;
