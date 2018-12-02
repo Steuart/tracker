@@ -33,9 +33,9 @@ public class TransferRecord extends BaseEntity{
     private Integer earnings;
 
     /**
-     * 支付金额
+     * 内容
      */
-    private Integer payout;
+    private String content;
 
     /**
      * 转化时间

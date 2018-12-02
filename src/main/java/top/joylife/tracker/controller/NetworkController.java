@@ -1,7 +1,9 @@
 package top.joylife.tracker.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.common.ReData;
@@ -11,10 +13,13 @@ import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
 import top.joylife.tracker.service.NetworkService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("network")
+@Slf4j
 public class NetworkController {
 
     @Autowired
@@ -94,8 +99,10 @@ public class NetworkController {
      * 回调
      * @return
      */
-    @RequestMapping(value = "/callback/{clickRecordId}")
-    public ReData<String> callBack(){
+    @RequestMapping(value = "/callback")
+    public ReData<String> callBack(HttpServletRequest request){
+        Map<String,String []> maps = request.getParameterMap();
+        log.info("xxxx:{}", JSON.toJSONString(maps));
         return ReUtil.success("xxxx");
     }
 }
