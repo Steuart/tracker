@@ -9,7 +9,7 @@ import top.joylife.tracker.common.bean.dto.TrafficDto;
 import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.param.TrafficParam;
 import top.joylife.tracker.common.bean.query.TrafficPageQuery;
-import top.joylife.tracker.common.util.PageUtil;
+import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.Tokens;
 import top.joylife.tracker.dao.entity.Traffic;
 import top.joylife.tracker.dao.impl.TokensDao;
@@ -63,7 +63,7 @@ public class TrafficService {
 
     public PageInfo<TrafficDto> pageQueryTraffic(TrafficPageQuery query){
         PageInfo<Traffic> pageInfo = trafficDao.pageQuery(query);
-        return PageUtil.copy(pageInfo,TrafficDto.class);
+        return BeanUtil.copy(pageInfo,TrafficDto.class);
     }
 
     /**

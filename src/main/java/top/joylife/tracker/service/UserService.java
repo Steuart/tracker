@@ -1,6 +1,5 @@
 package top.joylife.tracker.service;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -14,11 +13,10 @@ import top.joylife.tracker.common.bean.param.UserParam;
 import top.joylife.tracker.common.bean.query.UserPageQuery;
 import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.common.util.MD5Util;
-import top.joylife.tracker.common.util.PageUtil;
+import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.User;
 import top.joylife.tracker.dao.impl.UserDao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -140,7 +138,7 @@ public class UserService {
      */
     public PageInfo<UserDto> pageQueryUser(UserPageQuery query){
         PageInfo<User> pageInfo = userDao.pageQuery(query);
-        PageInfo<UserDto> userDtoPageInfo = PageUtil.copy(pageInfo,UserDto.class);
+        PageInfo<UserDto> userDtoPageInfo = BeanUtil.copy(pageInfo,UserDto.class);
         List<UserDto> userDtos = userDtoPageInfo.getList();
         if(!CollectionUtils.isEmpty(userDtos)){
             userDtos.forEach(userDto -> {

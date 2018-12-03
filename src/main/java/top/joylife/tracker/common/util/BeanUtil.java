@@ -3,11 +3,13 @@ package top.joylife.tracker.common.util;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
+import top.joylife.tracker.common.enums.QuotaEnum;
+import top.joylife.tracker.dao.entity.BaseEntity;
+import top.joylife.tracker.dao.impl.BaseDao;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class PageUtil {
+public class BeanUtil {
 
 
     /**
@@ -53,5 +55,32 @@ public class PageUtil {
         }
         toPage.setList(list);
         return toPage;
+    }
+
+    /**
+     * 生成map映射
+     * @param ids
+     * @param dao
+     * @param t
+     * @param <T>
+     * @return
+     */
+    public static <T extends BaseEntity> Map<Integer,T> generateMap(Set<Integer> ids, BaseDao<T> dao, Class<T> t){
+        List<T> lists = dao.listByIds(new ArrayList<>(ids),t);
+        Map<Integer,T> result = new HashMap<>();
+        for(T list:lists){
+            result.put(list.getId(),list);
+        }
+        return result;
+    }
+
+
+    public static String getValueFromParams(QuotaEnum quotaEnum, Map<String,String[]> params) {
+        String[] paramArr = params.get(quotaEnum.getCode());
+        String param = null;
+        if(paramArr.length>0){
+            param = paramArr[0];
+        }
+        return param;
     }
 }

@@ -1,37 +1,37 @@
-package top.joylife.tracker.dao.entity;
+package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.*;
 
-@Table(name = "transfer_record")
 @Data
-public class TransferRecord extends BaseEntity{
+public class TransferRecordDto {
+
+    private Integer id;
 
     /**
      * 项目id
      */
-    @Column(name = "campaign_id")
     private Integer campaignId;
+
+    private String campaignName;
 
     /**
      * 任务id
      */
-    @Column(name = "traffic_id")
     private Integer trafficId;
+
+    private String trafficName;
 
     /**
      * 点击记录id
      */
-    @Column(name = "click_record_id")
     private Integer clickRecordId;
 
     /**
      * 收入金额
      */
-    private BigDecimal earnings;
+    private Integer earnings;
 
     /**
      * 内容
@@ -41,7 +41,5 @@ public class TransferRecord extends BaseEntity{
     /**
      * 转化时间
      */
-    @Column(name = "transfer_date")
     private Date transferDate;
-
 }

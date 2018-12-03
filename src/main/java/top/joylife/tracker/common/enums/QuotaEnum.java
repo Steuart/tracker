@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum  QuotaEnum {
     PAYOUT("payout","支付金额"),
-    CLICK_RECORD_ID("clickRecordId","访问记录ID");
+    CLICK_RECORD_UUID("clickRecordUuid","访问记录ID");
     private String code;
     private String desc;
 

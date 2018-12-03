@@ -43,4 +43,16 @@ public class ClickRecordDao extends BaseDao<ClickRecord>{
                 .andBetween("dateUpdate",query.getUpdateBeginDate(),query.getUpdateEndDate());
         return example;
     }
+
+    /**
+     * 根据uuid查询
+     * @param uuid
+     * @return
+     */
+    public ClickRecord getByUuid(String uuid){
+        Example example = new Example(ClickRecord.class);
+        example.createCriteria()
+                .andEqualTo("uuid",uuid);
+        return clickRecordMapper.selectOneByExample(example);
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.OfferDto;
 import top.joylife.tracker.common.bean.param.OfferParam;
 import top.joylife.tracker.common.bean.query.OfferPageQuery;
-import top.joylife.tracker.common.util.PageUtil;
+import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.Offer;
 import top.joylife.tracker.dao.impl.OfferDao;
 
@@ -48,7 +48,7 @@ public class OfferService {
 
     public PageInfo<OfferDto> pageQueryOffer(OfferPageQuery query){
         PageInfo<Offer> pageInfo = offerDao.pageQuery(query);
-        return PageUtil.copy(pageInfo,OfferDto.class);
+        return BeanUtil.copy(pageInfo,OfferDto.class);
     }
 
     public List<OfferDto> listOffer(){

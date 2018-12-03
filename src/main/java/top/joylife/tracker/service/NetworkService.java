@@ -8,7 +8,7 @@ import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.NetworkDto;
 import top.joylife.tracker.common.bean.param.NetworkParam;
 import top.joylife.tracker.common.bean.query.NetworkPageQuery;
-import top.joylife.tracker.common.util.PageUtil;
+import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.Network;
 import top.joylife.tracker.dao.impl.NetworkDao;
 
@@ -48,7 +48,7 @@ public class NetworkService {
 
     public PageInfo<NetworkDto> pageQueryNetWork(NetworkPageQuery query){
         PageInfo<Network> pageInfo = networkDao.pageQuery(query);
-        return PageUtil.copy(pageInfo,NetworkDto.class);
+        return BeanUtil.copy(pageInfo,NetworkDto.class);
     }
 
     /**

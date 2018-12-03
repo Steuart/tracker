@@ -1,6 +1,7 @@
 package top.joylife.tracker.common.bean.query;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -12,7 +13,9 @@ public class NetworkPageQuery extends BasePageQuery {
      */
     private String name;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date beginDate;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 }

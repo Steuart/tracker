@@ -2,19 +2,15 @@ package top.joylife.tracker.service;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.ClickRecordDto;
-import top.joylife.tracker.common.bean.param.ClickRecordParam;
 import top.joylife.tracker.common.bean.query.ClickRecordPageQuery;
-import top.joylife.tracker.common.util.PageUtil;
+import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
-import top.joylife.tracker.dao.mapper.CampaignMapper;
-import top.joylife.tracker.dao.mapper.NetworkMapper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -60,7 +56,7 @@ public class ClickRecordService {
      */
     public PageInfo<ClickRecordDto> pageClickRecord(ClickRecordPageQuery query){
         PageInfo<ClickRecord> clickRecordDtoPageInfo = clickRecordDao.pageQuery(query);
-        PageInfo<ClickRecordDto> clickRecordDtoInfo =  PageUtil.copy(clickRecordDtoPageInfo,ClickRecordDto.class);
+        PageInfo<ClickRecordDto> clickRecordDtoInfo =  BeanUtil.copy(clickRecordDtoPageInfo,ClickRecordDto.class);
         List<ClickRecordDto> clickRecordDtos = clickRecordDtoInfo.getList();
         if(CollectionUtils.isEmpty(clickRecordDtos)){
             return clickRecordDtoInfo;
@@ -81,10 +77,10 @@ public class ClickRecordService {
             trafficIds.add(clickRecordDto.getTrafficId());
             networkIds.add(clickRecordDto.getNetworkId());
         });
-        Map<Integer,Offer> offerMap = generateMap(offerIds,offerDao,Offer.class);
-        Map<Integer,Campaign> campaignMap = generateMap(campaignIds,campaignDao,Campaign.class);
-        Map<Integer,Traffic> trafficMap = generateMap(trafficIds,trafficDao,Traffic.class);
-        Map<Integer,Network> networkMap = generateMap(networkIds,networkDao,Network.class);
+        Map<Integer,Offer> offerMap = BeanUtil.generateMap(offerIds,offerDao,Offer.class);
+        Map<Integer,Campaign> campaignMap = BeanUtil.generateMap(campaignIds,campaignDao,Campaign.class);
+        Map<Integer,Traffic> trafficMap = BeanUtil.generateMap(trafficIds,trafficDao,Traffic.class);
+        Map<Integer,Network> networkMap = BeanUtil.generateMap(networkIds,networkDao,Network.class);
         //补全信息
         clickRecordDtos.forEach(clickRecordDto -> {
             Offer offer = offerMap.get(clickRecordDto.getOfferId());
@@ -107,22 +103,5 @@ public class ClickRecordService {
             clickRecordDto.setContent(JSON.parseObject(clickRecord.getContent(),HashMap.class));
         });
         return clickRecordDtoInfo;
-    }
-
-    /**
-     * 生成map映射
-     * @param ids
-     * @param dao
-     * @param t
-     * @param <T>
-     * @return
-     */
-    private <T extends BaseEntity> Map<Integer,T> generateMap(Set<Integer> ids, BaseDao<T> dao, Class<T> t){
-        List<T> lists = dao.listByIds(new ArrayList<>(ids),t);
-        Map<Integer,T> result = new HashMap<>();
-        for(T list:lists){
-            result.put(list.getId(),list);
-        }
-        return result;
     }
 }

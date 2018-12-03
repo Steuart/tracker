@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.dto.TransferCountDto;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
+import top.joylife.tracker.common.bean.query.TransferRecordPageQuery;
 import top.joylife.tracker.common.util.DateUtil;
 import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.entity.TransferRecord;
@@ -31,7 +32,14 @@ public class TransferRecordDao extends BaseDao<TransferRecord> {
      */
     @Override
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
-        return null;
+        TransferRecordPageQuery query = (TransferRecordPageQuery)pageQuery;
+        Example example = new Example(TransferRecord.class);
+        example.createCriteria()
+                .andEqualTo("campaignId",query.getCampaignId())
+                .andEqualTo("trafficId",query.getTrafficId())
+                .andEqualTo("clickRecordId",query.getClickRecordId())
+                .andBetween("transferDate",query.getTransferBeginDate(),query.getTransferEndDate());
+        return example;
     }
 
 

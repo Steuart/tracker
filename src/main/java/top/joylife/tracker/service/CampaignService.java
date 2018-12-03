@@ -11,7 +11,7 @@ import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.query.CampaignPageQuery;
 import top.joylife.tracker.common.enums.SystemConfigEnum;
 import top.joylife.tracker.common.exception.Warning;
-import top.joylife.tracker.common.util.PageUtil;
+import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
 
@@ -97,7 +97,7 @@ public class CampaignService {
      */
     public PageInfo<CampaignDto> pageCampaign(CampaignPageQuery query){
         PageInfo<Campaign> campaignPage = campaignDao.pageQuery(query);
-        return PageUtil.copy(campaignPage,CampaignDto.class);
+        return BeanUtil.copy(campaignPage,CampaignDto.class);
     }
 
     /**
