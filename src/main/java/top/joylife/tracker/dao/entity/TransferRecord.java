@@ -34,6 +34,11 @@ public class TransferRecord extends BaseEntity{
     private BigDecimal earnings;
 
     /**
+     * 支付金额
+     */
+    private BigDecimal payout;
+
+    /**
      * 内容
      */
     private String content;

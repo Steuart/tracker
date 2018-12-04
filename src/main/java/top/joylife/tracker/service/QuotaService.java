@@ -129,7 +129,7 @@ public class QuotaService {
             throw new Warning(ErrorCode.quota_can_not_delete);
         }
         if(Quota.TypeEnum.GROUP.getCode().equals(quota.getType())){
-            deleteGroupCheck(quota.getGroupId());
+            deleteGroupCheck(quota.getId());
         }else{
             deleteQuotaCheck(quota.getCode());
         }

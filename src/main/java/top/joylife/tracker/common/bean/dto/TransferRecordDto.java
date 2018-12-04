@@ -2,6 +2,7 @@ package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -14,6 +15,9 @@ public class TransferRecordDto {
      */
     private Integer campaignId;
 
+    /**
+     * 项目名字
+     */
     private String campaignName;
 
     /**
@@ -21,6 +25,9 @@ public class TransferRecordDto {
      */
     private Integer trafficId;
 
+    /**
+     * 流量名字
+     */
     private String trafficName;
 
     /**
@@ -31,7 +38,12 @@ public class TransferRecordDto {
     /**
      * 收入金额
      */
-    private Integer earnings;
+    private BigDecimal earnings;
+
+    /**
+     * 支付金额
+     */
+    private BigDecimal payout;
 
     /**
      * 内容

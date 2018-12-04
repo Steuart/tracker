@@ -37,6 +37,11 @@ public class TransferRecordService {
     @Autowired
     private ClickRecordDao clickRecordDao;
 
+    /**
+     * 分页查询转化记录
+     * @param query
+     * @return
+     */
     public PageInfo<TransferRecordDto> pageTransferRecord(TransferRecordPageQuery query){
         PageInfo<TransferRecord> pageInfo = transferRecordDao.pageQuery(query);
         PageInfo<TransferRecordDto> dtoPageInfo = BeanUtil.copy(pageInfo, TransferRecordDto.class);
@@ -65,6 +70,10 @@ public class TransferRecordService {
         return dtoPageInfo;
     }
 
+    /**
+     * 保存转化记录
+     * @param params
+     */
     public void saveTransferRecord(Map<String,String[]> params){
         String clickRecordUuid = BeanUtil.getValueFromParams(QuotaEnum.CLICK_RECORD_UUID,params);
         String payout = BeanUtil.getValueFromParams(QuotaEnum.PAYOUT,params);
@@ -74,6 +83,7 @@ public class TransferRecordService {
             transferRecord.setCampaignId(clickRecord.getCampaignId());
             transferRecord.setClickRecordId(clickRecord.getId());
             transferRecord.setTrafficId(clickRecord.getTrafficId());
+            transferRecord.setPayout(clickRecord.getPayout());
         }
         transferRecord.setTransferDate(new Date());
         transferRecord.setContent(JSON.toJSONString(params));

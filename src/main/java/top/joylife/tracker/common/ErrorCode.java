@@ -13,7 +13,7 @@ public enum ErrorCode {
     campaign_exists("2001", "有项目正在使用TOKEN"),
     traffic_exists("2002", "有流量平台正在使用TOKEN"),
 
-    quota_is_not_empty("2003", "指标不为空格，不可删除"),
+    quota_is_not_empty("2003", "指标不为空，不可删除"),
     quota_can_not_delete("2004","指标不可删除"),
     quota_code_duplicate("2005","指标code重复,请换个code重试"),
 

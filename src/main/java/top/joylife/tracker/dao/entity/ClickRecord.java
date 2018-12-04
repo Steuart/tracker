@@ -2,6 +2,7 @@ package top.joylife.tracker.dao.entity;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -29,6 +30,11 @@ public class ClickRecord extends BaseEntity{
 
     @Column(name = "offer_id")
     private Integer offerId;
+
+    /**
+     * 支付金额
+     */
+    private BigDecimal payout;
 
     /**
      * 内容
