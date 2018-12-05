@@ -45,16 +45,19 @@ public class ClickRecord extends BaseEntity{
     /**
      * 点击内容
      */
+    @Column(name = "click_content")
     private String clickContent;
 
     /**
      * 转化内容
      */
+    @Column(name = "transfer_content")
     private String transferContent;
 
     /**
      * 转化日期
      */
+    @Column(name = "transfer_date")
     private Date transferDate;
 
     /**

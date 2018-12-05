@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.dto.TransferCountDto;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
@@ -37,13 +39,16 @@ public class ClickRecordDao extends BaseDao<ClickRecord>{
     public Example buildPageQueryExample(BasePageQuery pageQuery) {
         ClickRecordPageQuery query = (ClickRecordPageQuery) pageQuery;
         Example example = new Example(ClickRecord.class);
-        example.createCriteria()
-                .andEqualTo("trafficId",query.getTrafficId())
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("trafficId",query.getTrafficId())
                 .andEqualTo("networkId",query.getNetworkId())
                 .andEqualTo("offerId",query.getOfferId())
                 .andEqualTo("campaignId",query.getCampaignId())
                 .andBetween("dateCreate",query.getCreateBeginDate(),query.getCreateEndDate())
                 .andBetween("dateUpdate",query.getUpdateBeginDate(),query.getUpdateEndDate());
+        if(!CollectionUtils.isEmpty(query.getStatus())){
+            criteria.andIn("status",query.getStatus());
+        }
         return example;
     }
 

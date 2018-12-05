@@ -25,7 +25,7 @@ public class ClickRecordDaoTest {
     @Test
     public void getById(){
         ClickRecord clickRecord = clickRecordDao.getById(1);
-        String content = clickRecord.getContent();
+        String content = clickRecord.getClickContent();
         Map<String,Object> contentMap = JSON.parseObject(content,HashMap.class);
         log.info(Objects.toString(contentMap.get("name"),""));
     }
@@ -41,7 +41,7 @@ public class ClickRecordDaoTest {
         Map<String,Object> content = new HashMap<>();
         content.put("xxx","xxx");
         content.put("asdasd","asdasd");
-        clickRecord.setContent(JSON.toJSONString(content));
+        clickRecord.setClickContent(JSON.toJSONString(content));
         clickRecordDao.insert(clickRecord);
     }
 }

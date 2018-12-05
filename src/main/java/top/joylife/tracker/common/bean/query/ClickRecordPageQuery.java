@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class ClickRecordPageQuery extends BasePageQuery{
@@ -27,6 +28,11 @@ public class ClickRecordPageQuery extends BasePageQuery{
      * 项目id
      */
     private Integer campaignId;
+
+    /**
+     * 状态
+     */
+    private List<Integer> status;
 
     /**
      * 创建开始日期

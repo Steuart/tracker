@@ -2,6 +2,7 @@ package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
 
@@ -51,6 +52,17 @@ public class ClickRecordDto {
      * offer名字
      */
     private String offerName;
+
+    /**
+     * 收入
+     */
+    private BigDecimal earning;
+
+    /**
+     * 支付
+     */
+    private BigDecimal payout;
+
     /**
      * 内容
      */
@@ -60,6 +72,16 @@ public class ClickRecordDto {
      * 转化内容
      */
     private Map<String,Object> transferContent;
+
+    /**
+     * 转化日期
+     */
+    private Date transferDate;
+
+    /**
+     * 状态，0-未转化，1-转化
+     */
+    private Integer status;
 
     /**
      * 记录创建时间

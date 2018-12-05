@@ -44,7 +44,7 @@
 
   <select id="selectTransferCount" resultType="top.joylife.tracker.common.bean.dto.TransferCountDto">
     SELECT
-    count(*) as transferCount,COALESCE(sum(earnings),0) as sumEarnings,COALESCE(SUM(payout),0) as sumPayout
+    count(*) as transferCount,COALESCE(sum(earning),0) as sumEarnings,COALESCE(SUM(payout),0) as sumPayout
     FROM click_record
     where 1=1
     <if test="beginDate!=null">
