@@ -1,6 +1,7 @@
 package top.joylife.tracker.dao.entity;
 
 import lombok.Data;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -37,7 +38,41 @@ public class ClickRecord extends BaseEntity{
     private BigDecimal payout;
 
     /**
-     * 内容
+     * 收入金额
      */
-    private String content;
+    private BigDecimal earning;
+
+    /**
+     * 点击内容
+     */
+    private String clickContent;
+
+    /**
+     * 转化内容
+     */
+    private String transferContent;
+
+    /**
+     * 转化日期
+     */
+    private Date transferDate;
+
+    /**
+     * 状态，0-未转化，1-转化
+     */
+    private Integer status;
+
+    @Getter
+    public enum StatusEnum{
+        NOT_TRANSFER(0,"未转化"),
+        TRANSFER(1,"已转化");
+
+        private Integer code;
+
+        private String desc;
+        StatusEnum(Integer code, String desc){
+            this.code = code;
+            this.desc = desc;
+        }
+    }
 }

@@ -54,7 +54,12 @@ public class ClickRecordDto {
     /**
      * 内容
      */
-    private Map<String,Object> content;
+    private Map<String,Object> clickContent;
+
+    /**
+     * 转化内容
+     */
+    private Map<String,Object> transferContent;
 
     /**
      * 记录创建时间

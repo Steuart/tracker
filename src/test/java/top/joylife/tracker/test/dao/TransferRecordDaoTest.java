@@ -10,11 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.joylife.tracker.common.bean.dto.TransferCountDto;
 import top.joylife.tracker.common.util.DateUtil;
-import top.joylife.tracker.dao.impl.TransferRecordDao;
 
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.ZoneId;
 import java.util.Date;
 
 @RunWith(SpringRunner.class)

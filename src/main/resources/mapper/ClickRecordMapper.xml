@@ -41,4 +41,19 @@
     <result column="date_create" jdbcType="TIMESTAMP" property="dateCreate" />
     <result column="date_update" jdbcType="TIMESTAMP" property="dateUpdate" />
   </resultMap>
+
+  <select id="selectTransferCount" resultType="top.joylife.tracker.common.bean.dto.TransferCountDto">
+    SELECT
+    count(*) as transferCount,COALESCE(sum(earnings),0) as sumEarnings,COALESCE(SUM(payout),0) as sumPayout
+    FROM click_record
+    where 1=1
+    <if test="beginDate!=null">
+      and transfer_date >= #{beginDate}
+    </if>
+    <if test="endDate !=null">
+      and transfer_date <![CDATA[<=]]> #{endDate}
+    </if>
+      and status = 1
+  </select>
+
 </mapper>

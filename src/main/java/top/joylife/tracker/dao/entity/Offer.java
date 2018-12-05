@@ -2,6 +2,7 @@ package top.joylife.tracker.dao.entity;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -33,7 +34,7 @@ public class Offer extends BaseEntity{
     /**
      * 支付金额
      */
-    private Integer payout;
+    private BigDecimal payout;
 
     /**
      * 备注

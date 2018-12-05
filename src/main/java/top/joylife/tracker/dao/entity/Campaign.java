@@ -3,6 +3,7 @@ package top.joylife.tracker.dao.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Table(name = "campaign")
 @Data
@@ -63,17 +64,17 @@ public class Campaign extends BaseEntity{
      * 每点击花费
      */
     @Column(name = "cost_per_click")
-    private Integer costPerClick;
+    private BigDecimal costPerClick;
 
     /**
      * 平均每lead获利
      */
     @Column(name = "pay_per_lead")
-    private Integer payPerLead;
+    private BigDecimal payPerLead;
 
     /**
      * 是否激活
      */
     @Column(name = "is_active")
-    private Integer isActive;
+    private BigDecimal isActive;
 }

@@ -1,7 +1,6 @@
 package top.joylife.tracker.controller;
 
 
-import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import top.joylife.tracker.common.bean.dto.NetworkDto;
 import top.joylife.tracker.common.bean.param.NetworkParam;
 import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
+import top.joylife.tracker.service.ClickRecordService;
 import top.joylife.tracker.service.NetworkService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +24,9 @@ public class NetworkController {
 
     @Autowired
     private NetworkService networkService;
+
+    @Autowired
+    private ClickRecordService clickRecordService;
 
     /**
      * 根据id获取network
@@ -102,7 +105,7 @@ public class NetworkController {
     @RequestMapping(value = "/callback")
     public ReData<String> callBack(HttpServletRequest request){
         Map<String,String []> maps = request.getParameterMap();
-        log.info("xxxx:{}", JSON.toJSONString(maps));
-        return ReUtil.success("xxxx");
+        clickRecordService.saveTransferRecord(maps);
+        return ReUtil.success("success");
     }
 }

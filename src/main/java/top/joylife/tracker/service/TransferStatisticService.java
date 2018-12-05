@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import top.joylife.tracker.common.bean.dto.TransferCountDto;
 import top.joylife.tracker.common.bean.dto.TransferStatisticDto;
 import top.joylife.tracker.common.util.DateUtil;
-import top.joylife.tracker.dao.impl.TransferRecordDao;
+import top.joylife.tracker.dao.impl.ClickRecordDao;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ public class TransferStatisticService {
 
 
     @Autowired
-    private TransferRecordDao transferRecordDao;
+    private ClickRecordDao clickRecordDao;
 
     /**
      * 默认转化统计
@@ -26,12 +26,12 @@ public class TransferStatisticService {
         Date now  = new Date();
         Date todayBeginDate = DateUtil.getDayBeginTime(now);
         Date todayEndDate = DateUtil.getDayEndTime(now);
-        TransferCountDto todayCount = transferRecordDao.selectTransferCount(todayBeginDate, todayEndDate);
+        TransferCountDto todayCount = clickRecordDao.selectTransferCount(todayBeginDate, todayEndDate);
         //本月转化统计
         Date monthBeginDate = DateUtil.getFirstDayOfMonth(now);
-        TransferCountDto monthCount = transferRecordDao.selectTransferCount(monthBeginDate,todayEndDate);
+        TransferCountDto monthCount = clickRecordDao.selectTransferCount(monthBeginDate,todayEndDate);
         //总转化统计
-        TransferCountDto totalCount = transferRecordDao.selectTransferCount(null,null);
+        TransferCountDto totalCount = clickRecordDao.selectTransferCount(null,null);
         dto.setMonthEarnings(monthCount.getSumEarnings());
         dto.setTodayEarnings(todayCount.getSumEarnings());
         dto.setTodayTransfer(todayCount.getTransferCount());

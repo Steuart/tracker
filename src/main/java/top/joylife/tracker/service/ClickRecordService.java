@@ -2,20 +2,25 @@ package top.joylife.tracker.service;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.ClickRecordDto;
 import top.joylife.tracker.common.bean.query.ClickRecordPageQuery;
+import top.joylife.tracker.common.enums.QuotaEnum;
 import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.*;
 
 @Service
+@Slf4j
 public class ClickRecordService {
 
     @Autowired
@@ -44,10 +49,36 @@ public class ClickRecordService {
         ClickRecord record = new ClickRecord();
         record.setUuid(uuid);
         String content = JSON.toJSONString(params);
-        record.setContent(content);
+        record.setClickContent(content);
         clickRecordDao.insert(record);
     }
 
+
+    /**
+     * 保存转化记录
+     * @param params
+     */
+    public void saveTransferRecord(Map<String,String[]> params){
+        String clickRecordUuid = BeanUtil.getValueFromParams(QuotaEnum.CLICK_RECORD_UUID,params);
+        String payout = BeanUtil.getValueFromParams(QuotaEnum.PAYOUT,params);
+        ClickRecord clickRecord = clickRecordDao.getByUuid(clickRecordUuid);
+        if(clickRecord==null){
+            log.error("点击记录为空，uuid:{},params:{}",clickRecordUuid,JSON.toJSONString(params));
+            return;
+        }
+        ClickRecord clickRecordForUpdate = new ClickRecord();
+
+        clickRecordForUpdate.setId(clickRecord.getId());
+        clickRecordForUpdate.setPayout(clickRecord.getPayout());
+        clickRecordForUpdate.setStatus(ClickRecord.StatusEnum.TRANSFER.getCode());
+        clickRecordForUpdate.setTransferDate(new Date());
+        clickRecordForUpdate.setTransferContent(JSON.toJSONString(params));
+        if(NumberUtils.isParsable(payout)){
+            BigDecimal earning = new BigDecimal(payout);
+            clickRecordForUpdate.setEarning(earning);
+        }
+        clickRecordDao.updateById(clickRecordForUpdate);
+    }
 
     /**
      * 分页获取记录
@@ -100,7 +131,8 @@ public class ClickRecordService {
                 clickRecordDto.setNetworkName(network.getName());
             }
             ClickRecord clickRecord = clickRecordMap.get(clickRecordDto.getId());
-            clickRecordDto.setContent(JSON.parseObject(clickRecord.getContent(),HashMap.class));
+            clickRecordDto.setClickContent(JSON.parseObject(clickRecord.getClickContent(),HashMap.class));
+            clickRecordDto.setTransferContent(JSON.parseObject(clickRecord.getTransferContent(),HashMap.class));
         });
         return clickRecordDtoInfo;
     }
