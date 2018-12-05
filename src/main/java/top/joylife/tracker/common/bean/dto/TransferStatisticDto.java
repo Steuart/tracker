@@ -2,14 +2,16 @@ package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class TransferStatisticDto {
 
     private Integer todayTransfer;
 
-    private Integer todayEarnings;
+    private BigDecimal todayEarnings;
 
-    private Integer monthEarnings;
+    private BigDecimal monthEarnings;
 
-    private Integer totalEarnings;
+    private BigDecimal totalEarnings;
 }
