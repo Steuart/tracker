@@ -6,14 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.bean.dto.NetworkDto;
+import top.joylife.tracker.common.bean.dto.TokensDto;
 import top.joylife.tracker.common.bean.param.NetworkParam;
+import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.query.NetworkPageQuery;
 import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.Network;
+import top.joylife.tracker.dao.entity.Tokens;
 import top.joylife.tracker.dao.impl.NetworkDao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class NetworkService {
@@ -21,10 +25,17 @@ public class NetworkService {
     @Autowired
     private NetworkDao networkDao;
 
+    @Autowired
+    private TokensService tokensService;
+
     public NetworkDto getById(Integer id){
         Network network = networkDao.getById(id);
         NetworkDto networkDto = new NetworkDto();
         BeanUtils.copyProperties(network,networkDto);
+        List<TokensDto> callbackTokens = tokensService.listByIdRefAndType(id,Tokens.TypeEnum.CALLBACK.getCode());
+        networkDto.setCallbackTokens(callbackTokens);
+        List<TokensDto> offerTokens = tokensService.listByIdRefAndType(id,Tokens.TypeEnum.OFFER.getCode());
+        networkDto.setOfferTokens(offerTokens);
         return networkDto;
     }
 
@@ -32,6 +43,17 @@ public class NetworkService {
         Network network = new Network();
         BeanUtils.copyProperties(param,network);
         networkDao.insert(network);
+
+        //保存tokens
+        Integer networkId = network.getId();
+        List<TokensParam> offerTokens = param.getOfferTokens();
+        if(!CollectionUtils.isEmpty(offerTokens)) {
+            tokensService.batchAddTokens(offerTokens,networkId,Tokens.TypeEnum.OFFER);
+        }
+        List<TokensParam> callbackTokens = param.getCallbackTokens();
+        if(!CollectionUtils.isEmpty(callbackTokens)){
+            tokensService.batchAddTokens(callbackTokens,networkId,Tokens.TypeEnum.CALLBACK);
+        }
         return network.getId();
     }
 
@@ -39,6 +61,17 @@ public class NetworkService {
         Network network = new Network();
         BeanUtils.copyProperties(param,network);
         network.setId(id);
+
+        //更新tokens
+        Integer networkId = network.getId();
+        List<TokensParam> offerTokens = param.getOfferTokens();
+        if(!CollectionUtils.isEmpty(offerTokens)) {
+            tokensService.batchUpdateTokens(offerTokens,networkId,Tokens.TypeEnum.OFFER);
+        }
+        List<TokensParam> callbackTokens = param.getCallbackTokens();
+        if(!CollectionUtils.isEmpty(callbackTokens)){
+            tokensService.batchUpdateTokens(callbackTokens,networkId,Tokens.TypeEnum.CALLBACK);
+        }
         networkDao.updateById(network);
     }
 
@@ -48,7 +81,23 @@ public class NetworkService {
 
     public PageInfo<NetworkDto> pageQueryNetWork(NetworkPageQuery query){
         PageInfo<Network> pageInfo = networkDao.pageQuery(query);
-        return BeanUtil.copy(pageInfo,NetworkDto.class);
+        PageInfo<NetworkDto> result = BeanUtil.copy(pageInfo,NetworkDto.class);
+        List<NetworkDto> networkDtos = result.getList();
+        if(CollectionUtils.isEmpty(networkDtos)){
+           return result;
+        }
+        List<Integer> ids = new ArrayList<>();
+        networkDtos.forEach(networkDto -> {
+            ids.add(networkDto.getId());
+        });
+        Map<Integer,List<TokensDto>> callbackTokensDtoMap = tokensService.mapByIdRefsAndType(ids,Tokens.TypeEnum.CALLBACK.getCode());
+        Map<Integer,List<TokensDto>> offerTokensDtoMap = tokensService.mapByIdRefsAndType(ids, Tokens.TypeEnum.OFFER.getCode());
+        networkDtos.forEach(networkDto -> {
+            Integer id = networkDto.getId();
+            networkDto.setOfferTokens(offerTokensDtoMap.get(id));
+            networkDto.setCallbackTokens(callbackTokensDtoMap.get(id));
+        });
+        return result;
     }
 
     /**

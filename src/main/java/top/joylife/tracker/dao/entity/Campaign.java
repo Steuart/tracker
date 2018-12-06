@@ -40,10 +40,9 @@ public class Campaign extends BaseEntity{
     private String name;
 
     /**
-     * 重定向链接
+     * 访问链接
      */
-    @Column(name = "redirect_link")
-    private String redirectLink;
+    private String url;
 
     /**
      * 类型

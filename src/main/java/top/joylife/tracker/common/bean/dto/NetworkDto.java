@@ -1,8 +1,10 @@
 package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
+import top.joylife.tracker.dao.entity.Tokens;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class NetworkDto {
@@ -32,5 +34,16 @@ public class NetworkDto {
      * 更新时间
      */
     private Date dateUpdate;
+
+
+    /**
+     * 任务tokens
+     */
+    List<TokensDto> offerTokens;
+
+    /**
+     * 回调tokens
+     */
+    List<TokensDto> callbackTokens;
 
 }

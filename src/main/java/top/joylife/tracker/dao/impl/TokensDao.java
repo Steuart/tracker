@@ -1,7 +1,9 @@
 package top.joylife.tracker.dao.impl;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.query.BasePageQuery;
@@ -9,6 +11,7 @@ import top.joylife.tracker.dao.MyMapper;
 import top.joylife.tracker.dao.entity.Tokens;
 import top.joylife.tracker.dao.mapper.TokensMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -48,6 +51,23 @@ public class TokensDao extends BaseDao<Tokens>{
         return tokensMapper.selectByExample(example);
     }
 
+
+    /**
+     * 根据idRef列表查询token列表
+     * @param idRefs
+     * @param type
+     * @return
+     */
+    public List<Tokens> listByIdRefsAndType(List<Integer> idRefs, Integer type){
+        if(CollectionUtils.isEmpty(idRefs)){
+            return null;
+        }
+        Example example = new Example(Tokens.class);
+        example.createCriteria()
+                .andIn("idRef",idRefs)
+                .andEqualTo("type",type);
+        return tokensMapper.selectByExample(example);
+    }
 
     /**
      * 保存campaignToken

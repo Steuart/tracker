@@ -24,9 +24,9 @@ public class CampaignParam {
     private Integer offerId;
 
     /**
-     * 重定向链接
+     * 访问链接
      */
-    private String redirectLink;
+    private String url;
 
     /**
      * 名字

@@ -1,9 +1,11 @@
 package top.joylife.tracker.service;
 
 import com.github.pagehelper.PageInfo;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.cache.CampaignCache;
 import top.joylife.tracker.common.bean.dto.CampaignDto;
 import top.joylife.tracker.common.bean.param.CampaignParam;
@@ -32,6 +34,10 @@ public class CampaignService {
 
     @Autowired
     private TokensDao tokensDao;
+
+    @Autowired
+    private TokensService tokensService;
+
     /**
      * 根据id查询项目
      * @param id
@@ -62,8 +68,10 @@ public class CampaignService {
         campaignDao.insert(campaign);
         //保存campaignToken
         Integer campaignId = campaign.getId();
-        List<Tokens> tokens =  generateCampaignToken(campaignId, campaignParam.getTokens());
-        tokensDao.batchAddTokens(tokens);
+        List<TokensParam> tokensParams = campaignParam.getTokens();
+        if(!CollectionUtils.isEmpty(tokensParams)){
+            tokensService.batchAddTokens(tokensParams,campaignId,Tokens.TypeEnum.CAMPAIGN);
+        }
         return campaignId;
     }
 
@@ -77,9 +85,10 @@ public class CampaignService {
         campaignDao.updateById(campaign);
         //保存campaignToken
         Integer campaignId = campaign.getId();
-        List<Tokens> tokens = generateCampaignToken(campaignId, campaignParam.getTokens());
-        tokensDao.deleteByIdRefAndType(campaignId,Tokens.TypeEnum.CAMPAIGN.getCode());
-        tokensDao.batchAddTokens(tokens);
+        List<TokensParam> tokensParams = campaignParam.getTokens();
+        if(!CollectionUtils.isEmpty(tokensParams)){
+            tokensService.batchUpdateTokens(tokensParams,campaignId,Tokens.TypeEnum.CAMPAIGN);
+        }
     }
 
     /**
@@ -104,7 +113,7 @@ public class CampaignService {
      * 生成跳转链接
      * @return
      */
-    private String generateRedirectLink(List<TokensParam> tokens){
+    private String generateUrl(List<TokensParam> tokens){
         SystemConfig systemConfig = systemConfigDao.getByName(SystemConfigEnum.DOMAIN.getName());
         String domain = systemConfig.getValue();
         StringBuilder str = new StringBuilder();
@@ -137,25 +146,8 @@ public class CampaignService {
         campaign.setNetworkId(networkId);
 
         //生成redirectLink
-        String redirectLink = generateRedirectLink(campaignParam.getTokens());
-        campaign.setRedirectLink(redirectLink);
+        String url = generateUrl(campaignParam.getTokens());
+        campaign.setUrl(url);
         return campaign;
-    }
-
-    /**
-     * 生成campaignToken
-     * @param param
-     * @return
-     */
-    private List<Tokens> generateCampaignToken(Integer campaignId, List<TokensParam> param){
-        List<Tokens> tokens = new ArrayList<>();
-        param.forEach(tokenParam ->{
-            Tokens token = new Tokens();
-            BeanUtils.copyProperties(tokenParam, token);
-            token.setIdRef(campaignId);
-            token.setType(Tokens.TypeEnum.CAMPAIGN.getCode());
-            tokens.add(token);
-        });
-        return tokens;
     }
 }

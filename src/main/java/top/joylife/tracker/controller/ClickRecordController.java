@@ -33,7 +33,6 @@ public class ClickRecordController {
     /**
      * 记录点击日志
      * @param campaignId
-     * @param param
      * @param response
      * @param request
      */
@@ -41,7 +40,7 @@ public class ClickRecordController {
     public void recordLog(@PathVariable Integer campaignId,
                           HttpServletResponse response,HttpServletRequest request){
         CampaignDto campaignDto = campaignService.getCampaign(campaignId);
-        String link = campaignDto.getRedirectLink();
+        String link = campaignDto.getRedirectUrl();
         String clickRecordId = UuidUtil.getUuid();
         clickRecordService.saveClickRecord(clickRecordId,request);
         String redirectLink = String.format(link,clickRecordId);

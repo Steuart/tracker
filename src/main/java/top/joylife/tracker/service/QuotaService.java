@@ -14,10 +14,7 @@ import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 指标service
@@ -143,36 +140,39 @@ public class QuotaService {
     private void deleteQuotaCheck(String name) {
         List<Tokens> tokens = tokensDao.selectByName(name);
         if(!CollectionUtils.isEmpty(tokens)){
-            List<Integer> campaignIds = new ArrayList<>();
-            List<Integer> networkIds = new ArrayList<>();
-            List<Integer> trafficIds = new ArrayList<>();
+            Set<Integer> campaignIds = new HashSet<>();
+            Set<Integer> networkIds = new HashSet<>();
+            Set<Integer> trafficIds = new HashSet<>();
             tokens.forEach(token -> {
                 Tokens.TypeEnum typeEnum = Tokens.TypeEnum.getByCode(token.getType());
                 switch (typeEnum){
                     case CAMPAIGN:
                         campaignIds.add(token.getIdRef());
                         break;
-                    case NETWORK:
+                    case OFFER:
                         networkIds.add(token.getIdRef());
                         break;
                     case TRAFFIC:
                         trafficIds.add(token.getIdRef());
                         break;
+                    case CALLBACK:
+                        networkIds.add(token.getIdRef());
+                        break;
                 }
             });
             Map<String,Object> result = new HashMap<>();
             if(!CollectionUtils.isEmpty(campaignIds)) {
-                List<Campaign> campaigns = campaignDao.listByIds(campaignIds,Campaign.class);
+                List<Campaign> campaigns = campaignDao.listByIds(new ArrayList<>(campaignIds),Campaign.class);
                 result.put("campaign",campaigns);
             }
 
             if(!CollectionUtils.isEmpty(networkIds)) {
-                List<Network> networks = networkDao.listByIds(networkIds,Network.class);
+                List<Network> networks = networkDao.listByIds(new ArrayList<>(networkIds),Network.class);
                 result.put("network",networks);
             }
 
             if(!CollectionUtils.isEmpty(trafficIds)) {
-                List<Traffic> traffics = trafficDao.listByIds(trafficIds,Traffic.class);
+                List<Traffic> traffics = trafficDao.listByIds(new ArrayList<>(trafficIds),Traffic.class);
                 result.put("traffics",traffics);
             }
 

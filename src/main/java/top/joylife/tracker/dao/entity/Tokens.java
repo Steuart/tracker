@@ -16,7 +16,7 @@ public class Tokens extends BaseEntity{
     private Integer idRef;
 
     /**
-     * 类型，0-campaign,1-traffic,2-network
+     * 类型，0-campaign,1-traffic,2-network,3-callback
      */
     private Integer type;
 
@@ -34,7 +34,8 @@ public class Tokens extends BaseEntity{
     public enum TypeEnum {
         CAMPAIGN(0,"campaign"),
         TRAFFIC(1,"traffic"),
-        NETWORK(2,"network"),
+        OFFER(2,"offer"),
+        CALLBACK(3,"callback"),
         DEFAULT(-1,"default");
 
         private Integer code;

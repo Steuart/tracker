@@ -3,6 +3,7 @@ package top.joylife.tracker.common.bean.param;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class NetworkParam {
@@ -36,4 +37,14 @@ public class NetworkParam {
      * 更新时间
      */
     private Date dateUpdate;
+
+    /**
+     * offer跳转token
+     */
+    private List<TokensParam> offerTokens;
+
+    /**
+     * 回调跳转token
+     */
+    private List<TokensParam> callbackTokens;
 }
