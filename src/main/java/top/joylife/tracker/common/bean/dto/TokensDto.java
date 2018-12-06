@@ -13,7 +13,7 @@ public class TokensDto {
     private Integer idRef;
 
     /**
-     * 类型，0-campaign,1-traffic,2-network
+     * 类型，0:campaign-traffic,1:campaign-network,2:traffic,3:network,4:network-callback
      */
     private Integer type;
 
