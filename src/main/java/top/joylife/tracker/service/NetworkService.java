@@ -10,10 +10,13 @@ import top.joylife.tracker.common.bean.dto.TokensDto;
 import top.joylife.tracker.common.bean.param.NetworkParam;
 import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.query.NetworkPageQuery;
+import top.joylife.tracker.common.enums.SystemConfigEnum;
 import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.Network;
+import top.joylife.tracker.dao.entity.SystemConfig;
 import top.joylife.tracker.dao.entity.Tokens;
 import top.joylife.tracker.dao.impl.NetworkDao;
+import top.joylife.tracker.dao.impl.SystemConfigDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,9 @@ public class NetworkService {
 
     @Autowired
     private TokensService tokensService;
+
+    @Autowired
+    private SystemConfigDao systemConfigDao;
 
     public NetworkDto getById(Integer id){
         Network network = networkDao.getById(id);
@@ -42,6 +48,7 @@ public class NetworkService {
     public Integer saveNetwork(NetworkParam param){
         Network network = new Network();
         BeanUtils.copyProperties(param,network);
+        network.setCallbackUrl(generateCallbackUrl(param.getCallbackTokens()));
         networkDao.insert(network);
 
         //保存tokens
@@ -60,8 +67,8 @@ public class NetworkService {
     public void updateNetwork(Integer id,NetworkParam param){
         Network network = new Network();
         BeanUtils.copyProperties(param,network);
+        network.setCallbackUrl(generateCallbackUrl(param.getCallbackTokens()));
         network.setId(id);
-
         //更新tokens
         Integer networkId = network.getId();
         List<TokensParam> offerTokens = param.getOfferTokens();
@@ -115,5 +122,20 @@ public class NetworkService {
             });
         }
         return networkDtos;
+    }
+
+    /**
+     * 生成回调链接
+     * @return
+     */
+    private String generateCallbackUrl(List<TokensParam> callbackTokens){
+        SystemConfig config = systemConfigDao.getByName(SystemConfigEnum.DOMAIN.getName());
+        String domain = config.getValue();
+        StringBuilder callbackUrl = new StringBuilder();
+        callbackUrl.append(domain).append("/network/callback?");
+        callbackTokens.forEach(tokensDto -> {
+            callbackUrl.append(tokensDto.getName()).append("=").append(tokensDto.getValue()).append("&");
+        });
+        return callbackUrl.substring(0,callbackUrl.length()-1);
     }
 }

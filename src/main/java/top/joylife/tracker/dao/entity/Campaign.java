@@ -45,6 +45,12 @@ public class Campaign extends BaseEntity{
     private String url;
 
     /**
+     * 跳转链接
+     */
+    @Column(name = "redirect_url")
+    private String redirectUrl;
+
+    /**
      * 类型
      */
     private Integer type;

@@ -6,8 +6,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+import sun.tools.jstat.Token;
 import top.joylife.tracker.cache.CampaignCache;
 import top.joylife.tracker.common.bean.dto.CampaignDto;
+import top.joylife.tracker.common.bean.dto.TokensDto;
 import top.joylife.tracker.common.bean.param.CampaignParam;
 import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.query.CampaignPageQuery;
@@ -110,7 +113,7 @@ public class CampaignService {
     }
 
     /**
-     * 生成跳转链接
+     * 生成访问连接
      * @return
      */
     private String generateUrl(List<TokensParam> tokens){
@@ -120,6 +123,30 @@ public class CampaignService {
         str.append(domain).append("?");
         tokens.forEach(param -> {
             str.append(param.getName()).append("=").append(param.getValue()).append("&");
+        });
+        return str.substring(0,str.length()-1);
+    }
+
+    /**
+     * 生成跳转链接
+     * @param offerUrl
+     * @return
+     */
+    private String generateRedirectUrl(String offerUrl, List<Tokens> tokens){
+        if(StringUtils.isEmpty(tokens)){
+            return offerUrl;
+        }
+        StringBuilder str = new StringBuilder();
+        if(offerUrl.contains("?")){
+            str.append(offerUrl);
+            tokens.forEach(token -> {
+                str.append("&").append(token.getName()).append("=").append(token.getValue());
+            });
+            return str.toString();
+        }
+        str.append(offerUrl).append("?");
+        tokens.forEach(token -> {
+            str.append(token.getName()).append("=").append(token.getValue()).append("&");
         });
         return str.substring(0,str.length()-1);
     }
@@ -145,9 +172,14 @@ public class CampaignService {
         Integer networkId = offer.getNetworkId();
         campaign.setNetworkId(networkId);
 
-        //生成redirectLink
+        //生成访问链接
         String url = generateUrl(campaignParam.getTokens());
         campaign.setUrl(url);
+
+        //生成跳转链接
+        List<Tokens> offerTokens = tokensDao.listByIdRefAndType(networkId,Tokens.TypeEnum.OFFER.getCode());
+        String redirectUrl = generateRedirectUrl(offer.getUrl(),offerTokens);
+        campaign.setRedirectUrl(redirectUrl);
         return campaign;
     }
 }
