@@ -21,6 +21,11 @@ public class NetworkDto {
     private String homePage;
 
     /**
+     * 回调url
+     */
+    private String callbackUrl;
+
+    /**
      * 备注
      */
     private String remark;

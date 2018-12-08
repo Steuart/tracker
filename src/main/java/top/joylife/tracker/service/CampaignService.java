@@ -9,7 +9,6 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import top.joylife.tracker.cache.CampaignCache;
 import top.joylife.tracker.common.bean.dto.CampaignDto;
-import top.joylife.tracker.common.bean.dto.TokensDto;
 import top.joylife.tracker.common.bean.param.CampaignParam;
 import top.joylife.tracker.common.bean.param.TokensParam;
 import top.joylife.tracker.common.bean.query.CampaignPageQuery;
@@ -66,6 +65,10 @@ public class CampaignService {
     public Integer saveCampaign(CampaignParam campaignParam){
         Campaign campaign = generateCampaign(campaignParam);
         campaignDao.insert(campaign);
+        //生成访问链接
+        String url = generateUrl(campaign.getId(),campaignParam.getTokens());
+        campaign.setUrl(url);
+        campaignDao.updateById(campaign);
         //保存campaignToken
         Integer campaignId = campaign.getId();
         List<TokensParam> tokensParams = campaignParam.getTokens();
@@ -82,6 +85,9 @@ public class CampaignService {
     public void updateCampaign(Integer id,CampaignParam campaignParam){
         Campaign campaign = generateCampaign(campaignParam);
         campaign.setId(id);
+        //生成访问链接
+        String url = generateUrl(id,campaignParam.getTokens());
+        campaign.setUrl(url);
         campaignDao.updateById(campaign);
         //保存campaignToken
         Integer campaignId = campaign.getId();
@@ -113,11 +119,11 @@ public class CampaignService {
      * 生成访问连接
      * @return
      */
-    private String generateUrl(List<TokensParam> tokens){
+    private String generateUrl(Integer campaignId, List<TokensParam> tokens){
         SystemConfig systemConfig = systemConfigDao.getByName(SystemConfigEnum.DOMAIN.getName());
         String domain = systemConfig.getValue();
         StringBuilder str = new StringBuilder();
-        str.append(domain).append("?");
+        str.append(domain).append("/open/click/").append(campaignId).append("?");
         tokens.forEach(param -> {
             str.append(param.getName()).append("=").append(param.getValue()).append("&");
         });
@@ -168,10 +174,6 @@ public class CampaignService {
         }
         Integer networkId = offer.getNetworkId();
         campaign.setNetworkId(networkId);
-
-        //生成访问链接
-        String url = generateUrl(campaignParam.getTokens());
-        campaign.setUrl(url);
 
         //生成跳转链接
         List<Tokens> offerTokens = tokensDao.listByIdRefAndType(networkId,Tokens.TypeEnum.OFFER.getCode());

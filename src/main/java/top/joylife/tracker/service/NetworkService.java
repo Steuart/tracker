@@ -132,7 +132,7 @@ public class NetworkService {
         SystemConfig config = systemConfigDao.getByName(SystemConfigEnum.DOMAIN.getName());
         String domain = config.getValue();
         StringBuilder callbackUrl = new StringBuilder();
-        callbackUrl.append(domain).append("/network/callback?");
+        callbackUrl.append(domain).append("/open/callback?");
         callbackTokens.forEach(tokensDto -> {
             callbackUrl.append(tokensDto.getName()).append("=").append(tokensDto.getValue()).append("&");
         });

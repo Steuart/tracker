@@ -2,6 +2,7 @@ package top.joylife.tracker.common.bean.param;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -51,12 +52,12 @@ public class CampaignParam {
     /**
      * 每点击花费
      */
-    private Integer costPerClick;
+    private BigDecimal costPerClick;
 
     /**
      * 平均每lead获利
      */
-    private Integer payPerLead;
+    private BigDecimal payPerLead;
 
     /**
      * 是否激活

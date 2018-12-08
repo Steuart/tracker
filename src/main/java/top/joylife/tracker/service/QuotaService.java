@@ -10,6 +10,8 @@ import org.springframework.util.CollectionUtils;
 import top.joylife.tracker.common.ErrorCode;
 import top.joylife.tracker.common.bean.dto.QuotaDto;
 import top.joylife.tracker.common.bean.param.QuotaParam;
+import top.joylife.tracker.common.enums.QuotaEnum;
+import top.joylife.tracker.common.enums.QuotaGroupEnum;
 import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
@@ -180,6 +182,46 @@ public class QuotaService {
                 throw new Warning(ErrorCode.campaign_exists, result);
             }
         }
+    }
+
+    /**
+     * 初始化指标
+     */
+    public void initQuota(){
+        List<Quota> quotas = new ArrayList<>();
+        Map<String,Integer> groupMap = new HashMap<>();
+        //构建分组
+        for(QuotaGroupEnum groupEnum: QuotaGroupEnum.values()){
+            Quota quota = new Quota();
+            quota.setGroupId(0);
+            Integer id = groupEnum.ordinal()+1;
+            quota.setId(id);
+            quota.setCode(groupEnum.getCode());
+            quota.setName(groupEnum.getName());
+            quota.setType(Quota.TypeEnum.GROUP.getCode());
+            quota.setDeleteAble(1);
+            groupMap.put(quota.getCode(),id);
+            quotas.add(quota);
+        }
+        //构建指标
+        for (QuotaEnum quotaEnum:QuotaEnum.values()){
+            Quota quota = new Quota();
+            Integer groupId = groupMap.get(quotaEnum.getGroupEnum().getCode());
+            quota.setCode(quotaEnum.getCode());
+            quota.setName(quotaEnum.getName());
+            quota.setType(Quota.TypeEnum.QOUTA.getCode());
+            quota.setDeleteAble(1);
+            quota.setGroupId(groupId);
+            quotas.add(quota);
+        }
+
+        //清空表
+        quotaDao.truncateQuota();
+        log.info("初始化指标:{}",JSON.toJSONString(quotas));
+        //插入数据
+        quotas.forEach(quota -> {
+            quotaDao.insert(quota);
+        });
     }
 
     /**

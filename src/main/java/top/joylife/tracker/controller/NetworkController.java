@@ -25,9 +25,6 @@ public class NetworkController {
     @Autowired
     private NetworkService networkService;
 
-    @Autowired
-    private ClickRecordService clickRecordService;
-
     /**
      * 根据id获取network
      * @param id
@@ -96,16 +93,5 @@ public class NetworkController {
     public ReData<Integer> deleteNetwork(@PathVariable Integer id){
         networkService.deleteNetwork(id);
         return ReUtil.success(id);
-    }
-
-    /**
-     * 回调
-     * @return
-     */
-    @RequestMapping(value = "/callback")
-    public ReData<String> callBack(HttpServletRequest request){
-        Map<String,String []> maps = request.getParameterMap();
-        clickRecordService.saveTransferRecord(maps);
-        return ReUtil.success("success");
     }
 }

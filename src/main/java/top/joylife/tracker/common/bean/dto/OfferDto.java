@@ -2,6 +2,7 @@ package top.joylife.tracker.common.bean.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -13,6 +14,11 @@ public class OfferDto {
      * 联盟id
      */
     private Integer networkId;
+
+    /**
+     * 联盟名字
+     */
+    private String networkName;
 
     /**
      * 名字
@@ -32,7 +38,7 @@ public class OfferDto {
     /**
      * 支付金额
      */
-    private Integer payout;
+    private BigDecimal payout;
 
     /**
      * 备注

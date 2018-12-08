@@ -63,4 +63,11 @@ public class QuotaDao extends BaseDao<Quota> {
                 .andNotEqualTo("groupId",0);
         return quotaMapper.selectByExample(example);
     }
+
+    /**
+     * 清空表
+     */
+    public void truncateQuota(){
+        quotaMapper.truncateTable();
+    }
 }

@@ -47,6 +47,16 @@ public class QuotaController {
     }
 
     /**
+     * 初始化指标
+     * @return
+     */
+    @PutMapping(value = "init")
+    public ReData<String> initQuota(){
+        quotaService.initQuota();
+        return ReUtil.success("success");
+    }
+
+    /**
      * 根据id更新指标
      * @param id
      * @param param

@@ -29,9 +29,4 @@ public class QuotaParam {
      * 指标类型
      */
     private Integer type;
-
-    /**
-     * 是否可删除
-     */
-    private Integer deleteAble;
 }

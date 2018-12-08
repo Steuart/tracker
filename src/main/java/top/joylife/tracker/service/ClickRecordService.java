@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import top.joylife.tracker.common.bean.dto.CampaignDto;
 import top.joylife.tracker.common.bean.dto.ClickRecordDto;
 import top.joylife.tracker.common.bean.query.ClickRecordPageQuery;
 import top.joylife.tracker.common.enums.QuotaEnum;
@@ -44,10 +45,21 @@ public class ClickRecordService {
      * @param request
      */
     @Async
-    public void saveClickRecord(String uuid, HttpServletRequest request){
+    public void saveClickRecord(String uuid, CampaignDto campaignDto, HttpServletRequest request){
         Map<String,String[]> params = request.getParameterMap();
         ClickRecord record = new ClickRecord();
         record.setUuid(uuid);
+        record.setTrafficId(campaignDto.getTrafficId());
+        record.setOfferId(campaignDto.getOfferId());
+        record.setNetworkId(campaignDto.getNetworkId());
+        record.setCampaignId(campaignDto.getId());
+        String[] payoutArr = params.get(QuotaEnum.PAYOUT.getCode());
+        if(payoutArr!=null && payoutArr.length!=0){
+            String payout = payoutArr[0];
+            if(NumberUtils.isParsable(payout)){
+                record.setPayout(new BigDecimal(payout));
+            }
+        }
         String content = JSON.toJSONString(params);
         record.setClickContent(content);
         clickRecordDao.insert(record);

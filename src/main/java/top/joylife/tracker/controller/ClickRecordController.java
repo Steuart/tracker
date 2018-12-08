@@ -25,31 +25,7 @@ import java.io.IOException;
 public class ClickRecordController {
 
     @Autowired
-    private CampaignService campaignService;
-
-    @Autowired
     private ClickRecordService clickRecordService;
-
-    /**
-     * 记录点击日志
-     * @param campaignId
-     * @param response
-     * @param request
-     */
-    @RequestMapping(value = "/{campaignId}")
-    public void recordLog(@PathVariable Integer campaignId,
-                          HttpServletResponse response,HttpServletRequest request){
-        CampaignDto campaignDto = campaignService.getCampaign(campaignId);
-        String link = campaignDto.getRedirectUrl();
-        String clickRecordId = UuidUtil.getUuid();
-        clickRecordService.saveClickRecord(clickRecordId,request);
-        String redirectLink = String.format(link,clickRecordId);
-        try {
-            response.sendRedirect(redirectLink);
-        } catch (IOException e) {
-            log.error("重定向异常:redirectLink:{}",redirectLink,e);
-        }
-    }
 
     /**
      * 分页获取点击记录

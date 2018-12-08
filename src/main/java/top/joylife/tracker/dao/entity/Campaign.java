@@ -81,5 +81,5 @@ public class Campaign extends BaseEntity{
      * 是否激活
      */
     @Column(name = "is_active")
-    private BigDecimal isActive;
+    private Integer isActive;
 }

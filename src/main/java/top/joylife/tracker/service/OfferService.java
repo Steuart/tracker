@@ -9,17 +9,21 @@ import top.joylife.tracker.common.bean.dto.OfferDto;
 import top.joylife.tracker.common.bean.param.OfferParam;
 import top.joylife.tracker.common.bean.query.OfferPageQuery;
 import top.joylife.tracker.common.util.BeanUtil;
+import top.joylife.tracker.dao.entity.Network;
 import top.joylife.tracker.dao.entity.Offer;
+import top.joylife.tracker.dao.impl.NetworkDao;
 import top.joylife.tracker.dao.impl.OfferDao;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class OfferService {
 
     @Autowired
     private OfferDao offerDao;
+
+    @Autowired
+    private NetworkDao networkDao;
 
     public OfferDto getById(Integer id){
         Offer network = offerDao.getById(id);
@@ -48,7 +52,23 @@ public class OfferService {
 
     public PageInfo<OfferDto> pageQueryOffer(OfferPageQuery query){
         PageInfo<Offer> pageInfo = offerDao.pageQuery(query);
-        return BeanUtil.copy(pageInfo,OfferDto.class);
+        PageInfo<OfferDto> offerDtoPageInfo = BeanUtil.copy(pageInfo,OfferDto.class);
+        List<OfferDto> offerDtos = offerDtoPageInfo.getList();
+        Set<Integer> networkIds = new HashSet<>();
+        if(!CollectionUtils.isEmpty(offerDtos)){
+            offerDtos.forEach(offerDto -> {
+                networkIds.add(offerDto.getNetworkId());
+            });
+        }
+        Map<Integer,Network> networkMap = BeanUtil.generateMap(networkIds,networkDao,Network.class);
+        offerDtos.forEach(offerDto -> {
+            Network network = networkMap.get(offerDto.getNetworkId());
+            if(network == null){
+                return;
+            }
+            offerDto.setNetworkName(network.getName());
+        });
+        return offerDtoPageInfo;
     }
 
     public List<OfferDto> listOffer(){
