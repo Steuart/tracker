@@ -2,6 +2,8 @@ package top.joylife.tracker.common.bean.dto;
 
 
 import lombok.Data;
+
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -55,14 +57,29 @@ public class CampaignDto {
     private Integer clicks;
 
     /**
+     * 总收入
+     */
+    private BigDecimal payouts;
+
+    /**
+     * 总支出
+     */
+    private BigDecimal earnings;
+
+    /**
      * 每点击花费
      */
-    private Integer costPerClick;
+    private String costPerClick;
 
     /**
      * 平均每lead获利
      */
-    private Integer payPerLead;
+    private String payPerLead;
+
+    /**
+     * 收益比率
+     */
+    private String roi;
 
     /**
      * 是否激活

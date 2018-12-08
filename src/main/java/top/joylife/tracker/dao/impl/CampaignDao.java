@@ -12,6 +12,7 @@ import top.joylife.tracker.dao.entity.Campaign;
 import top.joylife.tracker.dao.mapper.CampaignMapper;
 import top.joylife.tracker.dao.MyMapper;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -44,5 +45,21 @@ public class CampaignDao extends BaseDao<Campaign>{
         criteria.andEqualTo("networkId",query.getNetworkId());
         criteria.andBetween("dateCreate",query.getBeginDate(),query.getEndDate());
         return example;
+    }
+
+    /**
+     * 添加转化数
+     * @param id
+     */
+    public void addLeadsCount(Integer id, BigDecimal earning){
+        campaignMapper.addLeadsCount(id,earning);
+    }
+
+    /**
+     * 添加转化数
+     * @param id
+     */
+    public void addClickCount(Integer id,BigDecimal payout){
+        campaignMapper.addClickCount(id,payout);
     }
 }

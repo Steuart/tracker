@@ -17,6 +17,10 @@ import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Service
@@ -112,7 +116,28 @@ public class CampaignService {
      */
     public PageInfo<CampaignDto> pageCampaign(CampaignPageQuery query){
         PageInfo<Campaign> campaignPage = campaignDao.pageQuery(query);
-        return BeanUtil.copy(campaignPage,CampaignDto.class);
+        PageInfo<CampaignDto> campaignDtoPageInfo = BeanUtil.copy(campaignPage,CampaignDto.class);
+        List<CampaignDto> campaignDtos = campaignDtoPageInfo.getList();
+        DecimalFormat df = new DecimalFormat("0.00");
+        BigDecimal handren = new BigDecimal(100);
+        if(!CollectionUtils.isEmpty(campaignDtos)){
+            campaignDtos.forEach(campaignDto -> {
+                Integer totalClicks = campaignDto.getClicks();
+                BigDecimal payouts = campaignDto.getPayouts();
+                BigDecimal cpc = payouts.divide(new BigDecimal(totalClicks),RoundingMode.HALF_UP);
+                String cpcStr = cpc.setScale(4,BigDecimal.ROUND_HALF_UP).toString();
+                campaignDto.setCostPerClick(cpcStr);
+                Integer totalLeads = campaignDto.getLeads();
+                BigDecimal earnings = campaignDto.getEarnings();
+                BigDecimal ppl = earnings.divide(new BigDecimal(totalLeads),RoundingMode.HALF_UP);
+                String pplStr = ppl.setScale(4,BigDecimal.ROUND_HALF_UP).toString();
+                campaignDto.setPayPerLead(pplStr);
+                BigDecimal roi = earnings.subtract(payouts).divide(payouts,RoundingMode.HALF_UP).multiply(handren);
+                String roiStr = roi.setScale(2,BigDecimal.ROUND_HALF_UP).toString();
+                campaignDto.setRoi(roiStr);
+            });
+        }
+        return campaignDtoPageInfo;
     }
 
     /**

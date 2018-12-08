@@ -66,16 +66,14 @@ public class Campaign extends BaseEntity{
     private Integer clicks;
 
     /**
-     * 每点击花费
+     * 总花费
      */
-    @Column(name = "cost_per_click")
-    private BigDecimal costPerClick;
+    private BigDecimal payouts;
 
     /**
-     * 平均每lead获利
+     * 总收入
      */
-    @Column(name = "pay_per_lead")
-    private BigDecimal payPerLead;
+    private BigDecimal earnings;
 
     /**
      * 是否激活

@@ -54,15 +54,18 @@ public class ClickRecordService {
         record.setNetworkId(campaignDto.getNetworkId());
         record.setCampaignId(campaignDto.getId());
         String[] payoutArr = params.get(QuotaEnum.PAYOUT.getCode());
+        BigDecimal cost = new BigDecimal(0);
         if(payoutArr!=null && payoutArr.length!=0){
             String payout = payoutArr[0];
             if(NumberUtils.isParsable(payout)){
-                record.setPayout(new BigDecimal(payout));
+                cost = new BigDecimal(payout);
             }
         }
+        record.setPayout(cost);
         String content = JSON.toJSONString(params);
         record.setClickContent(content);
         clickRecordDao.insert(record);
+        campaignDao.addClickCount(campaignDto.getId(),cost);
     }
 
 
@@ -85,11 +88,13 @@ public class ClickRecordService {
         clickRecordForUpdate.setStatus(ClickRecord.StatusEnum.TRANSFER.getCode());
         clickRecordForUpdate.setTransferDate(new Date());
         clickRecordForUpdate.setTransferContent(JSON.toJSONString(params));
+        BigDecimal earning = new BigDecimal(0);
         if(NumberUtils.isParsable(payout)){
-            BigDecimal earning = new BigDecimal(payout);
+            earning = new BigDecimal(payout);
             clickRecordForUpdate.setEarning(earning);
         }
         clickRecordDao.updateById(clickRecordForUpdate);
+        campaignDao.addLeadsCount(clickRecord.getCampaignId(),earning);
     }
 
     /**
