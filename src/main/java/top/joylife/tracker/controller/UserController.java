@@ -15,6 +15,7 @@ import top.joylife.tracker.common.bean.query.UserPageQuery;
 import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.common.bean.param.UserParam;
 import top.joylife.tracker.common.util.ReUtil;
+import top.joylife.tracker.dao.entity.User;
 import top.joylife.tracker.service.UserService;
 
 import javax.servlet.http.Cookie;
@@ -44,6 +45,9 @@ public class UserController {
         if(StringUtils.isEmpty(password)){
             throw new Warning(ErrorCode.password_can_not_be_empty);
         }
+        if(!User.StatusEnum.ACTIVE.getCode().equals(userDto.getStatus())){
+            throw new Warning(ErrorCode.account_frozen);
+        }
         String dbPassword = userDto.getPassword();
         String md5Password = userService.md5Password(username,password);
         if(dbPassword == null || !dbPassword.equals(md5Password)){
@@ -60,6 +64,15 @@ public class UserController {
         result.setToken(token);
         result.setUser(userDto);
         return ReUtil.success(result);
+    }
+
+    @PostMapping(value = "/register")
+    public ReData<String> register(@RequestBody(required = false) UserParam userParam){
+        Integer status = userService.registerUser(userParam);
+        if(User.StatusEnum.ACTIVE.getCode().equals(status)){
+            return ReUtil.success("恭喜你！注册成功！");
+        }
+        return ReUtil.success("恭喜你！注册成功！请联系管理员激活账号");
     }
 
     /**
@@ -132,8 +145,6 @@ public class UserController {
     /**
      * 更新用户密码，通过用户id更新
      * @param username
-     * @param oldPassword
-     * @param newPassword
      * @return
      */
     @PostMapping(value = "/passwordWithOld/{username}")

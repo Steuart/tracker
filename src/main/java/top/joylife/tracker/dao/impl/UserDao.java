@@ -50,7 +50,8 @@ public class UserDao extends BaseDao<User>{
         }
         Example example = new Example(User.class);
         example.createCriteria()
-                .andEqualTo("username",username);
+                .andEqualTo("username",username)
+                .andEqualTo("dateDelete",0);
         return userMapper.selectOneByExample(example);
     }
 

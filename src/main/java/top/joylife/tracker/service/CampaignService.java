@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
-import sun.tools.jstat.Token;
 import top.joylife.tracker.cache.CampaignCache;
 import top.joylife.tracker.common.bean.dto.CampaignDto;
 import top.joylife.tracker.common.bean.dto.TokensDto;
@@ -19,8 +18,6 @@ import top.joylife.tracker.common.exception.Warning;
 import top.joylife.tracker.common.util.BeanUtil;
 import top.joylife.tracker.dao.entity.*;
 import top.joylife.tracker.dao.impl.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

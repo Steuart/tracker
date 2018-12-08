@@ -87,6 +87,22 @@ public class UserService {
     }
 
     /**
+     * 注册用户
+     * @param userParam
+     * @return
+     */
+    public Integer registerUser(UserParam userParam){
+        List<User> users = userDao.list(User.class);
+        if(!CollectionUtils.isEmpty(users)){
+            userParam.setStatus(User.StatusEnum.DISABLE.getCode());
+        }else{
+            userParam.setStatus(User.StatusEnum.ACTIVE.getCode());
+        }
+        this.addUser(userParam);
+        return userParam.getStatus();
+    }
+
+    /**
      * 更新用户
      * @param userId
      * @param userParam
