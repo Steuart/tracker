@@ -132,7 +132,7 @@ public class CampaignService {
                 Integer totalLeads = campaignDto.getLeads();
                 BigDecimal earnings = campaignDto.getEarnings();
                 BigDecimal ppl = zero;
-                if(totalClicks!=null && totalClicks>0){
+                if(totalLeads!=null && totalLeads>0){
                     ppl = earnings.divide(new BigDecimal(totalLeads),RoundingMode.HALF_UP);
                 }
                 String pplStr = ppl.setScale(4,BigDecimal.ROUND_HALF_UP).toString();
