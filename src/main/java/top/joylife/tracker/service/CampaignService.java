@@ -117,21 +117,30 @@ public class CampaignService {
         PageInfo<Campaign> campaignPage = campaignDao.pageQuery(query);
         PageInfo<CampaignDto> campaignDtoPageInfo = BeanUtil.copy(campaignPage,CampaignDto.class);
         List<CampaignDto> campaignDtos = campaignDtoPageInfo.getList();
-        DecimalFormat df = new DecimalFormat("0.00");
         BigDecimal handren = new BigDecimal(100);
+        BigDecimal zero = new BigDecimal(0);
         if(!CollectionUtils.isEmpty(campaignDtos)){
             campaignDtos.forEach(campaignDto -> {
                 Integer totalClicks = campaignDto.getClicks();
                 BigDecimal payouts = campaignDto.getPayouts();
-                BigDecimal cpc = payouts.divide(new BigDecimal(totalClicks),RoundingMode.HALF_UP);
+                BigDecimal cpc = zero;
+                if(totalClicks!=null && totalClicks>0){
+                    cpc = payouts.divide(new BigDecimal(totalClicks),RoundingMode.HALF_UP);
+                }
                 String cpcStr = cpc.setScale(4,BigDecimal.ROUND_HALF_UP).toString();
                 campaignDto.setCostPerClick(cpcStr);
                 Integer totalLeads = campaignDto.getLeads();
                 BigDecimal earnings = campaignDto.getEarnings();
-                BigDecimal ppl = earnings.divide(new BigDecimal(totalLeads),RoundingMode.HALF_UP);
+                BigDecimal ppl = zero;
+                if(totalClicks!=null && totalClicks>0){
+                    ppl = earnings.divide(new BigDecimal(totalLeads),RoundingMode.HALF_UP);
+                }
                 String pplStr = ppl.setScale(4,BigDecimal.ROUND_HALF_UP).toString();
                 campaignDto.setPayPerLead(pplStr);
-                BigDecimal roi = earnings.subtract(payouts).divide(payouts,RoundingMode.HALF_UP).multiply(handren);
+                BigDecimal roi = zero;
+                if(payouts!=null && payouts.compareTo(zero)>0){
+                    roi = earnings.subtract(payouts).divide(payouts,RoundingMode.HALF_UP).multiply(handren);
+                }
                 String roiStr = roi.setScale(2,BigDecimal.ROUND_HALF_UP).toString();
                 campaignDto.setRoi(roiStr);
             });
