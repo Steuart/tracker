@@ -92,4 +92,14 @@ public class ClickRecordDto {
      * 记录更新时间
      */
     private Date dateUpdate;
+
+    /**
+     * 点击日志
+     */
+    private String clickLog;
+
+    /**
+     * 转化日志
+     */
+    private String transferLog;
 }

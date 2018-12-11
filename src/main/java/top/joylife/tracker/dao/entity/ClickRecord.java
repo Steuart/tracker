@@ -65,6 +65,12 @@ public class ClickRecord extends BaseEntity{
      */
     private Integer status;
 
+    @Column(name = "click_log")
+    private String clickLog;
+
+    @Column(name = "transfer_log")
+    private String transferLog;
+
     @Getter
     public enum StatusEnum{
         NOT_TRANSFER(0,"未转化"),

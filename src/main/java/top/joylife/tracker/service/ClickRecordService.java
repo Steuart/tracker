@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.servlet.mvc.condition.ParamsRequestCondition;
 import top.joylife.tracker.common.bean.dto.CampaignDto;
 import top.joylife.tracker.common.bean.dto.ClickRecordDto;
 import top.joylife.tracker.common.bean.query.ClickRecordPageQuery;
@@ -47,6 +48,7 @@ public class ClickRecordService {
     @Async
     public void saveClickRecord(String uuid, CampaignDto campaignDto, HttpServletRequest request){
         Map<String,String[]> params = request.getParameterMap();
+        Map<String,Object> result = parseRequest(request);
         ClickRecord record = new ClickRecord();
         record.setUuid(uuid);
         record.setTrafficId(campaignDto.getTrafficId());
@@ -62,10 +64,36 @@ public class ClickRecordService {
             }
         }
         record.setPayout(cost);
-        String content = JSON.toJSONString(params);
+        String content = JSON.toJSONString(result);
         record.setClickContent(content);
         clickRecordDao.insert(record);
         campaignDao.addClickCount(campaignDto.getId(),cost);
+    }
+
+    /**
+     * 解析httpRequest
+     * @param request
+     * @return
+     */
+    private Map<String,Object> parseRequest(HttpServletRequest request){
+        Map<String,String[]> params = request.getParameterMap();
+        Map<String,Object> result = new HashMap<>();
+        for (Map.Entry<String,String[]> param:params.entrySet()){
+            String name = param.getKey();
+            String[] value = param.getValue();
+            if(value!=null && value.length!=0){
+                result.put(name,value[0]);
+            }
+        }
+        Enumeration<String> heads = request.getHeaderNames();
+        while (heads.hasMoreElements()){
+            String head = heads.nextElement();
+            String value = request.getHeader(head);
+            result.put(head,value);
+        }
+        result.put(QuotaEnum.REMOTE_IP.getCode(),request.getRemoteAddr());
+        result.put(QuotaEnum.LOCALE.getCode(),JSON.toJSONString(request.getLocale()));
+        return result;
     }
 
 

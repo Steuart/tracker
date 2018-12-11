@@ -6,18 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import top.joylife.tracker.common.ReData;
-import top.joylife.tracker.common.bean.dto.CampaignDto;
 import top.joylife.tracker.common.bean.dto.ClickRecordDto;
-import top.joylife.tracker.common.bean.param.ClickRecordParam;
 import top.joylife.tracker.common.bean.query.ClickRecordPageQuery;
 import top.joylife.tracker.common.util.ReUtil;
-import top.joylife.tracker.common.util.UuidUtil;
-import top.joylife.tracker.service.CampaignService;
 import top.joylife.tracker.service.ClickRecordService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("clickRecord")
