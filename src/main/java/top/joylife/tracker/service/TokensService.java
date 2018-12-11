@@ -10,10 +10,7 @@ import top.joylife.tracker.dao.entity.Tokens;
 import top.joylife.tracker.dao.impl.TokensDao;
 
 import javax.naming.InsufficientResourcesException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class TokensService {
@@ -83,8 +80,11 @@ public class TokensService {
      * @return
      */
     public Map<Integer,List<TokensDto>> mapByIdRefsAndType(List<Integer> idRefs, Integer type){
-        List<Tokens> tokens = tokensDao.listByIdRefsAndType(idRefs,type);
         Map<Integer,List<TokensDto>> result = new HashMap<>();
+        if(CollectionUtils.isEmpty(idRefs)){
+            return result;
+        }
+        List<Tokens> tokens = tokensDao.listByIdRefsAndType(idRefs,type);
         if(CollectionUtils.isEmpty(tokens)){
             return result;
         }

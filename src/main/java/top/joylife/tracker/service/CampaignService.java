@@ -198,7 +198,7 @@ public class CampaignService {
         }
         Integer networkId = offer.getNetworkId();
         campaign.setNetworkId(networkId);
-
+        campaign.setUrl("");
         //生成跳转链接
         List<Tokens> offerTokens = tokensDao.listByIdRefAndType(networkId,Tokens.TypeEnum.OFFER.getCode());
         String redirectUrl = generateRedirectUrl(offer.getUrl(),offerTokens);
