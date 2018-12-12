@@ -1,0 +1,453 @@
+2018-12-12 13:41:47.892 [background-preinit] DEBUG o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+2018-12-12 13:41:48.147 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:41:48.149 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:41:48.337 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-12 13:41:48.337 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-12 13:41:49.653 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:41:49.667 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:41:50.687 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:41:50.708 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:41:50.714 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:41:50.714 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:41:50.723 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/leon/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-12 13:41:50.809 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:41:50.810 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2473 ms
+2018-12-12 13:41:50.863 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:41:50.865 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:41:50.869 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:41:50.870 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:41:50.870 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:41:50.870 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:41:50.870 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:41:51.103 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:41:51.465 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-12-12 13:41:52.641 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:41:52.871 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:41:52.872 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:41:52.873 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:41:52.873 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:41:53.058 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:41:53.184 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:41:53.239 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:41:53.260 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:41:53.279 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:41:53.284 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 6.034 seconds (JVM running for 7.677)
+2018-12-12 13:43:00.565 [http-nio-8080-exec-1] INFO  org.apache.coyote.http11.Http11Processor - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in the request target. The valid characters are defined in RFC 7230 and RFC 3986
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:467)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:294)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2018-12-12 13:43:00.919 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-12 13:43:00.919 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-12-12 13:43:00.937 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 18 ms
+2018-12-12 13:45:08.444 [Thread-19] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:08.455 [Thread-19] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2018-12-12 13:45:09.010 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:45:09.012 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:45:09.882 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:09.910 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:10.168 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:45:10.169 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:10.169 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:45:10.170 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:45:10.189 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:45:10.189 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1171 ms
+2018-12-12 13:45:10.207 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:45:10.208 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:45:10.208 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:45:10.208 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:45:10.208 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:45:10.208 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:45:10.208 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:45:10.239 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:45:10.324 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-2} inited
+2018-12-12 13:45:10.968 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:11.047 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:45:11.047 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:45:11.047 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:45:11.047 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:45:11.080 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:45:11.113 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:45:11.145 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:11.146 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:45:11.148 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:45:11.149 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 2.205 seconds (JVM running for 205.554)
+2018-12-12 13:45:11.152 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:45:15.608 [Thread-27] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:15.613 [Thread-27] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-2} closed
+2018-12-12 13:45:16.007 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:45:16.007 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:45:16.637 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:16.642 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:16.785 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:45:16.786 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:16.786 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:45:16.787 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:45:16.795 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:45:16.795 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 784 ms
+2018-12-12 13:45:16.867 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:45:16.876 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:45:16.881 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:45:16.883 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:45:16.883 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:45:16.883 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:45:16.884 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:45:16.948 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:45:17.057 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-3} inited
+2018-12-12 13:45:18.283 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:18.561 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:45:18.562 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:45:18.562 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:45:18.562 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:45:18.603 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:45:18.664 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:45:18.786 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:18.787 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:45:18.816 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:45:18.817 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 2.88 seconds (JVM running for 213.223)
+2018-12-12 13:45:18.832 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:45:26.185 [Thread-33] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:26.187 [Thread-33] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-3} closed
+2018-12-12 13:45:26.593 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:45:26.594 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:45:27.083 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:27.093 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:27.369 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:45:27.371 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:27.371 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:45:27.371 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:45:27.385 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:45:27.385 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 778 ms
+2018-12-12 13:45:27.427 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:45:27.428 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:45:27.429 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:45:27.429 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:45:27.429 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:45:27.429 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:45:27.429 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:45:27.499 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:45:27.628 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-4} inited
+2018-12-12 13:45:28.337 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:28.406 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:45:28.407 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:45:28.407 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:45:28.407 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:45:28.431 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:45:28.474 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:45:28.506 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:28.506 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:45:28.509 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:45:28.510 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.967 seconds (JVM running for 222.916)
+2018-12-12 13:45:28.511 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:45:42.090 [Thread-39] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:42.093 [Thread-39] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-4} closed
+2018-12-12 13:45:42.409 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:45:42.409 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:45:42.781 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:42.787 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:45:42.903 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:45:42.905 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:42.905 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:45:42.906 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:45:42.911 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:45:42.911 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 497 ms
+2018-12-12 13:45:42.928 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:45:42.929 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:45:42.929 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:45:42.929 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:45:42.929 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:45:42.929 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:45:42.930 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:45:42.954 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:45:43.035 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-5} inited
+2018-12-12 13:45:43.531 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:45:43.590 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:45:43.590 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:45:43.590 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:45:43.590 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:45:43.615 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:45:43.677 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:45:43.717 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:45:43.717 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:45:43.721 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:45:43.722 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.355 seconds (JVM running for 238.128)
+2018-12-12 13:45:43.724 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:50:53.413 [Thread-45] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:50:53.418 [Thread-45] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-5} closed
+2018-12-12 13:50:53.743 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:50:53.743 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:50:54.048 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:50:54.053 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:50:54.231 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:50:54.233 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:50:54.233 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:50:54.233 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:50:54.246 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:50:54.247 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 498 ms
+2018-12-12 13:50:54.273 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:50:54.273 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:50:54.273 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:50:54.273 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:50:54.273 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:50:54.274 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:50:54.274 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:50:54.311 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:50:54.403 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-6} inited
+2018-12-12 13:50:55.064 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:50:55.233 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:50:55.233 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:50:55.233 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:50:55.233 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:50:55.257 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:50:55.312 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:50:55.366 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:50:55.366 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:50:55.369 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:50:55.369 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.655 seconds (JVM running for 549.796)
+2018-12-12 13:50:55.371 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:51:01.817 [Thread-51] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:01.820 [Thread-51] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-6} closed
+2018-12-12 13:51:02.148 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:51:02.148 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:51:02.440 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:02.445 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:02.551 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:51:02.552 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:02.552 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:51:02.552 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:51:02.557 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:51:02.557 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 406 ms
+2018-12-12 13:51:02.573 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:51:02.573 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:51:02.573 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:51:02.573 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:51:02.573 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:51:02.573 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:51:02.574 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:51:02.593 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:51:02.665 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-7} inited
+2018-12-12 13:51:03.175 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:03.369 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:51:03.369 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:51:03.369 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:51:03.369 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:51:03.397 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:51:03.468 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:51:03.504 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:03.505 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:51:03.510 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:51:03.510 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.433 seconds (JVM running for 557.938)
+2018-12-12 13:51:03.513 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:51:11.993 [Thread-57] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:11.997 [Thread-57] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-7} closed
+2018-12-12 13:51:12.277 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:51:12.278 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:51:12.548 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:12.554 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:12.664 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:51:12.665 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:12.665 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:51:12.665 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:51:12.671 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:51:12.672 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 391 ms
+2018-12-12 13:51:12.692 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:51:12.692 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:51:12.692 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:51:12.692 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:51:12.693 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:51:12.693 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:51:12.693 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:51:12.715 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:51:12.792 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-8} inited
+2018-12-12 13:51:13.292 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:13.355 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:51:13.356 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:51:13.356 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:51:13.356 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:51:13.378 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:51:13.406 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:51:13.437 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:13.437 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:51:13.444 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:51:13.446 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.197 seconds (JVM running for 567.875)
+2018-12-12 13:51:13.450 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:51:43.234 [Thread-63] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:43.238 [Thread-63] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-8} closed
+2018-12-12 13:51:43.614 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:51:43.615 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:51:44.309 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:44.327 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:44.657 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:51:44.660 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:44.661 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:51:44.661 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:51:44.676 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:51:44.676 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1057 ms
+2018-12-12 13:51:44.720 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:51:44.721 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:51:44.722 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:51:44.722 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:51:44.722 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:51:44.722 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:51:44.723 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:51:44.791 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:51:44.954 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-9} inited
+2018-12-12 13:51:45.787 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:45.845 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:51:45.845 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:51:45.845 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:51:45.845 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:51:45.867 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:51:45.898 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:51:45.932 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:45.932 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:51:45.935 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:51:45.935 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 2.354 seconds (JVM running for 600.366)
+2018-12-12 13:51:45.937 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:51:54.429 [Thread-69] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:54.431 [Thread-69] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-9} closed
+2018-12-12 13:51:54.746 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:51:54.746 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:51:55.015 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:55.022 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:51:55.135 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:51:55.137 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:55.137 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:51:55.137 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:51:55.143 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:51:55.143 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 394 ms
+2018-12-12 13:51:55.160 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:51:55.160 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:51:55.160 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:51:55.160 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:51:55.160 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:51:55.160 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:51:55.161 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:51:55.182 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:51:55.259 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-10} inited
+2018-12-12 13:51:55.821 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:51:55.878 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:51:55.879 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:51:55.879 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:51:55.879 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:51:55.900 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:51:55.931 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:51:55.965 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:51:55.965 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:51:55.968 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:51:55.968 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.253 seconds (JVM running for 610.4)
+2018-12-12 13:51:55.970 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:52:07.513 [Thread-75] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:52:07.516 [Thread-75] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-10} closed
+2018-12-12 13:52:07.862 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 1885 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:52:07.862 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:52:08.135 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:52:08.140 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:52:08.243 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:52:08.244 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:52:08.244 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:52:08.245 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:52:08.250 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:52:08.250 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 384 ms
+2018-12-12 13:52:08.286 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:52:08.287 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:52:08.288 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:52:08.288 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:52:08.288 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:52:08.289 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:52:08.289 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:52:08.315 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:52:08.381 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-11} inited
+2018-12-12 13:52:08.855 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:52:08.929 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:52:08.929 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:52:08.929 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:52:08.929 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:52:08.952 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:52:08.995 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:52:09.034 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:52:09.034 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:52:09.037 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:52:09.038 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.207 seconds (JVM running for 623.47)
+2018-12-12 13:52:09.040 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:52:15.614 [Thread-86] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:52:15.617 [Thread-86] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-11} closed
+2018-12-12 13:52:22.134 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 2016 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:52:22.139 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:52:22.409 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-12 13:52:22.410 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-12 13:52:23.649 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:52:23.668 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:52:24.633 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:52:24.648 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:52:24.655 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:52:24.655 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:52:24.670 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/leon/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-12 13:52:24.754 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:52:24.754 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2344 ms
+2018-12-12 13:52:24.803 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:52:24.805 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:52:24.809 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:52:24.809 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:52:24.809 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:52:24.809 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:52:24.809 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:52:25.093 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:52:25.456 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2018-12-12 13:52:26.579 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:52:26.860 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:52:26.861 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:52:26.862 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:52:26.863 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:52:27.025 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:52:27.204 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:52:27.257 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:52:27.277 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:52:27.327 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:52:27.331 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 6.221 seconds (JVM running for 7.863)
+2018-12-12 13:52:33.484 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-12 13:52:33.484 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2018-12-12 13:52:33.497 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 13 ms
+2018-12-12 13:53:25.381 [Thread-19] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:53:25.387 [Thread-19] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2018-12-12 13:53:25.672 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Starting TrackerApplication on localhost with PID 2016 (/Users/leon/testplace/tracker/target/classes started by leon in /Users/leon/testplace/tracker)
+2018-12-12 13:53:25.673 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - No active profile set, falling back to default profiles: default
+2018-12-12 13:53:25.985 [restartedMain] WARN  tk.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:53:25.991 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[top.joylife.tracker]' package. Please check your configuration.
+2018-12-12 13:53:26.119 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2018-12-12 13:53:26.119 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:53:26.120 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2018-12-12 13:53:26.120 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-12 13:53:26.133 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-12-12 13:53:26.133 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 457 ms
+2018-12-12 13:53:26.150 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+2018-12-12 13:53:26.151 [restartedMain] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+2018-12-12 13:53:26.151 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-12 13:53:26.151 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-12 13:53:26.151 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+2018-12-12 13:53:26.151 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-12 13:53:26.151 [restartedMain] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+2018-12-12 13:53:26.177 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2018-12-12 13:53:26.258 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-2} inited
+2018-12-12 13:53:26.937 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:53:27.005 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2018-12-12 13:53:27.005 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2018-12-12 13:53:27.005 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2018-12-12 13:53:27.005 [restartedMain] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2018-12-12 13:53:27.029 [restartedMain] WARN  o.s.b.a.freemarker.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2018-12-12 13:53:27.061 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-12-12 13:53:27.094 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2018-12-12 13:53:27.095 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-12-12 13:53:27.097 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-12 13:53:27.098 [restartedMain] INFO  top.joylife.tracker.TrackerApplication - Started TrackerApplication in 1.458 seconds (JVM running for 67.633)
+2018-12-12 13:53:27.100 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2018-12-12 13:53:40.921 [Thread-33] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-12 13:53:40.926 [Thread-33] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-2} closed
