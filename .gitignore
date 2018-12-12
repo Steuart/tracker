@@ -15,8 +15,9 @@
 *.iws
 *.iml
 *.ipr
-/profiles/
+/profiles/prod.properties
 /log/
+/LOG_DIR_IS_UNDEFINED/
 ### NetBeans ###
 /nbproject/private/
 /build/

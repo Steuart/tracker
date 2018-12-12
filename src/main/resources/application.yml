@@ -6,8 +6,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driverClassName: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/tracker?useUnicode=true&amp&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT&useSSL=false
-      username: root
+      url: @jdbc.url@
+      username: @jdbc.username@
       password: @jdbc.password@
       initialSize: 5
       minIdle: 5
@@ -27,7 +27,7 @@ spring:
   devtools:
     restart:
       additional-paths: src/main
-      enabled: true
+      enabled: @devtools.enable@
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
